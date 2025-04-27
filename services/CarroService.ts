@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'react-native-fs';
 import { join } from 'path';
-import { Carro } from '@/models/Carro';
+import { Carro } from '../models/Carro';
 
 const CAR_FILE_PATH = join('/data/', 'cars.json');
 
