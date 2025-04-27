@@ -1,15 +1,18 @@
-import { Text, View } from "react-native";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Index from './app/index';
 
-export default function Index() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Index">
+        <Stack.Screen name="Index" component={Index} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
