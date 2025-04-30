@@ -1,30 +1,43 @@
-import { readFile, writeFile } from 'react-native-fs';
-import { join } from 'path';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Autodromo } from '../models/Autodromo';
 
-const AUTODROMO_FILE_PATH = join('/data/', 'autodromo.json');
+const AUTODROMO_KEY = 'autodromos';
 
-export const getAutodromo = async (): Promise<Autodromo[]> => {
+export const getAutodromos = async (): Promise<Autodromo[]> => {
   try {
-    const data = await readFile(AUTODROMO_FILE_PATH);
-    return JSON.parse(data);
+    const json = await AsyncStorage.getItem(AUTODROMO_KEY);
+    return json ? JSON.parse(json) : [];
   } catch (e) {
-    console.error('Erro ao ler informações dos Autodromos:', e);
+    console.error('Erro ao ler informações dos Autódromos:', e);
     return [];
   }
 };
 
-export const saveAutodromo = async (carros: Autodromo[]): Promise<void> => {
+export const saveAutodromos = async (autodromos: Autodromo[]): Promise<void> => {
   try {
-    const data = JSON.stringify(carros, null, 2);
-    await writeFile(AUTODROMO_FILE_PATH, data, 'utf8');
+    await AsyncStorage.setItem(AUTODROMO_KEY, JSON.stringify(autodromos));
   } catch (e) {
-    console.error('Erro ao salvar informações do autodromo:', e);
+    console.error('Erro ao salvar autódromos:', e);
   }
 };
 
 export const addAutodromo = async (autodromo: Autodromo): Promise<void> => {
-  const autodromos = await getAutodromo();
+  const autodromos = await getAutodromos();
   autodromos.push(autodromo);
-  await saveAutodromo(autodromos);
+  await saveAutodromos(autodromos);
+};
+
+export const updateAutodromo = async (autodromo: Autodromo): Promise<void> => {
+  const autodromos = await getAutodromos();
+  const index = autodromos.findIndex(a => a.id === autodromo.id);
+  if (index !== -1) {
+    autodromos[index] = autodromo;
+    await saveAutodromos(autodromos);
+  }
+};
+
+export const deleteAutodromo = async (id: string): Promise<void> => {
+  const autodromos = await getAutodromos();
+  const updated = autodromos.filter(a => a.id !== id);
+  await saveAutodromos(updated);
 };
