@@ -21,6 +21,9 @@ const { CARRO_DATA, AUTODROMO_DATA } = data;
 
 import Menu from './components/menu';
 
+import DefaultStyles from './components/styles/default';
+import ImageStyles from './components/styles/images';
+
 const Index = () => {
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
@@ -48,9 +51,9 @@ const Index = () => {
   const Carro = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
       <View style={ styles.carros }>
-        <Text style={styles.text}>{item.marca} - {item.modelo}</Text>
+        <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
         <Image
-          style={styles.tinyLogo}
+          style={ImageStyles.tinyLogo}
           source={item.imagem}
           resizeMode="contain"
         />
@@ -61,9 +64,9 @@ const Index = () => {
   const Autodromo = ({ item }: {item: Autodromo}) => (
     <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
       <View style={ styles.carros }>
-        <Text style={styles.text}>{item.nome}</Text>
+        <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
-          style={styles.tinyLogo}
+          style={ImageStyles.tinyLogo}
           source={item.imagem}
           resizeMode="contain"
         />
@@ -72,9 +75,9 @@ const Index = () => {
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={DefaultStyles.container}>
       <View style={styles.caixaPesquisa}>
-        <Text style={styles.textoCaixa}>ROMCOS</Text>
+        <Text style={DefaultStyles.titulo}>ROMCOS</Text>
       </View>
 
       <View style={styles.pesquisador}>
@@ -82,21 +85,21 @@ const Index = () => {
           autoCorrect={false}
           placeholder={"Em qual autódromo deseja correr?"}
           placeholderTextColor="grey"
-          style={styles.textInput}
+          style={DefaultStyles.textInput}
           clearButtonMode="always"
         />
         <TextInput
           autoCorrect={false}
           placeholder={"Qual carro quer dirigir?"}
           placeholderTextColor="grey"
-          style={styles.textInput}
+          style={DefaultStyles.textInput}
           clearButtonMode="always"
         />
       </View>
 
-      <View style={styles.titleBox}>
-        <Text style={styles.titleText}>Veículos populares</Text>
-        <Text style={styles.textoPesquisador}>ver mais</Text>
+      <View style={DefaultStyles.titleBox}>
+        <Text style={DefaultStyles.titleText}>Veículos populares</Text>
+        <Text style={DefaultStyles.subtitleText}>ver mais</Text>
       </View>
 
       <FlatList
@@ -107,10 +110,11 @@ const Index = () => {
           horizontal={ true }
       />
 
-      <View style={styles.titleBox}>
-        <Text style={styles.titleText}>Autódromos Favoritos</Text>
-        <Text style={styles.textoPesquisador}>ver mais</Text>
+      <View style={DefaultStyles.titleBox}>
+        <Text style={DefaultStyles.titleText}>Autódromos Favoritos</Text>
+        <Text style={DefaultStyles.subtitleText}>ver mais</Text>
       </View>
+
       <FlatList
           // data={autodromoData}
           data={AUTODROMO_DATA}
@@ -118,43 +122,13 @@ const Index = () => {
           keyExtractor={(item) => item.id}
           horizontal={ true }
       />
+      
       <Menu/>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
-  },
-  textInput: {
-    width: '90%',
-    borderBottomWidth: 2,
-    borderBottomColor: '#ccc',
-    color: 'white',
-    fontSize: 15,
-    height: 40,
-    paddingTop: 1,
-    paddingBottom: 1,
-    paddingLeft: 4,
-    paddingRight: 4,
-    alignSelf: 'center',
-    marginBottom: '3%',
-    marginTop: '3%',
-    lineHeight: 1,
-  },
-  tinyLogo: {
-    width: 230,
-    height: 160,
-    alignSelf: 'center',
-  },
   caixaPesquisa: {
     width: '100%',
     height: 210,
@@ -162,14 +136,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     marginTop: 30
-  },
-  textoCaixa: {
-    color: 'white',
-    margin: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    alignSelf: 'flex-start',
-    left: 30
   },
   pesquisador: {
     marginTop: -165,
@@ -186,18 +152,6 @@ const styles = StyleSheet.create({
     color: '#9D9D9D',
     marginLeft: '3%',
     top: 3
-  },
-  titleBox: {
-    width: '100%',
-    marginTop: 20,
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  titleText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#F57300',
-    marginLeft: 15,
   },
   carros: {
     marginLeft: 10,
