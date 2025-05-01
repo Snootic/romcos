@@ -4,6 +4,7 @@ const DefaultStyles = StyleSheet.create({
     container: {
       backgroundColor: '#FFFFFF',
       alignItems: 'center',
+      minHeight: '100%',
     },
     textBold: {
       fontSize: 15,
@@ -60,7 +61,7 @@ const DefaultStyles = StyleSheet.create({
       display: 'flex',
       alignItems: 'center',
       marginTop: 30
-    },
+    }
 });
 
 export default DefaultStyles;
