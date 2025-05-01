@@ -17,17 +17,19 @@ import { Autodromo } from '../models/Autodromo';
 import { getAutodromos } from '../services/Autodromo';
 
 import data from './dev/customData';
-const { CARRO_DATA, AUTODROMO_DATA } = data;
 
 import Menu from './components/menu';
+import EntityView from './components/entities';
 
 import DefaultStyles from './components/styles/default';
-import ImageStyles from './components/styles/images';
 
 const Index = () => {
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
   const [autodromoData, setAutodromoData] = React.useState<Autodromo[]>([]);
+  
+  const { CARRO_DATA, AUTODROMO_DATA } = data;
+  const [CarroView, AutodromoView] = EntityView;
 
   React.useEffect(() => {
     getCarros()
@@ -46,33 +48,6 @@ const Index = () => {
         setCarroData([]);
       });
   }, []);
-
-
-  const Carro = ({ item }: {item: Carro}) => (
-    <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
-      <View style={ styles.carros }>
-        <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
-        <Image
-          style={ImageStyles.tinyLogo}
-          source={item.imagem}
-          resizeMode="contain"
-        />
-      </View>
-    </Pressable>
-  );
-
-  const Autodromo = ({ item }: {item: Autodromo}) => (
-    <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
-      <View style={ styles.carros }>
-        <Text style={DefaultStyles.textBold}>{item.nome}</Text>
-        <Image
-          style={ImageStyles.tinyLogo}
-          source={item.imagem}
-          resizeMode="contain"
-        />
-      </View>
-    </Pressable>
-  );
 
   return (
     <ScrollView contentContainerStyle={DefaultStyles.container}>
@@ -105,7 +80,7 @@ const Index = () => {
       <FlatList
           // data={carroData}
           data={CARRO_DATA}
-          renderItem={Carro}
+          renderItem={CarroView}
           keyExtractor={(item) => item.id}
           horizontal={ true }
       />
@@ -118,7 +93,7 @@ const Index = () => {
       <FlatList
           // data={autodromoData}
           data={AUTODROMO_DATA}
-          renderItem={Autodromo}
+          renderItem={AutodromoView}
           keyExtractor={(item) => item.id}
           horizontal={ true }
       />
@@ -129,7 +104,6 @@ const Index = () => {
 };
 
 const styles = StyleSheet.create({
-
   pesquisador: {
     marginTop: -165,
     width: '90%',
@@ -145,9 +119,6 @@ const styles = StyleSheet.create({
     color: '#9D9D9D',
     marginLeft: '3%',
     top: 3
-  },
-  carros: {
-    marginLeft: 10,
   }
 });
 
