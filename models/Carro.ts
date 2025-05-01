@@ -9,4 +9,5 @@ export interface Carro{
     km100?: number;
     max_vel?: number;
     desc?: string;
+    imagem: string; // url da imagem
 }
