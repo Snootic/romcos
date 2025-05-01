@@ -14,7 +14,7 @@ import {
 import { Carro }  from '../models/Carro';
 import { getCarros } from '@/services/CarroService';
 
-const App = () => {
+const Index = () => {
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
 
@@ -30,11 +30,11 @@ const App = () => {
   const Carro = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
       <View>
+        <Text style={styles.text}>{item.marca} - {item.modelo}</Text>
         <Image
           style={styles.tinyLogo}
           source={item.imagem}
         />
-        <Text style={styles.text}>{item.modelo}</Text>
       </View>
     </Pressable>
   );
@@ -46,32 +46,27 @@ const App = () => {
       </View>
 
       <View style={styles.pesquisador}>
-        <Text style={styles.textoPesquisador}>Olá Mundo</Text>
         <TextInput
           autoCorrect={false}
-          //placeholder={MENSAGEM_EMAIL}
+          placeholder={"Em qual autódromo deseja correr?"}
           placeholderTextColor="grey"
           style={styles.textInput}
           clearButtonMode="always"
-          //defaultValue={EMAIL}
-          // onChangeText={(value) => setUser(value)}
         />
-
-        <Text style={styles.textoPesquisador}>Olá Mundo</Text>
         <TextInput
           autoCorrect={false}
-          //placeholder={MENSAGEM_EMAIL}
+          placeholder={"Qual carro quer dirigir?"}
           placeholderTextColor="grey"
           style={styles.textInput}
           clearButtonMode="always"
-          //defaultValue={EMAIL}
-          // onChangeText={(value) => setUser(value)}
         />
       </View>
+
       <View style={styles.titleBox}>
         <Text style={styles.titleText}>Veículos populares</Text>
         <Text style={styles.textoPesquisador}>ver mais</Text>
       </View>
+      
       <SafeAreaView style={styles.container}>
         <FlatList
           data={carroData}
@@ -86,13 +81,14 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f4f4f4',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
   },
   text: {
-    fontSize: 24,
+    fontSize: 15,
     fontWeight: 'bold',
     color: '#333',
+    textAlign: 'center',
   },
   textInput: {
     width: '90%',
@@ -112,13 +108,13 @@ const styles = StyleSheet.create({
   },
   tinyLogo: {
     width: 250,
-    height: 150,
+    height: 180,
     alignSelf: 'center',
   },
   caixaPesquisa: {
     width: '100%',
     height: 210,
-    backgroundColor: 'orange',
+    backgroundColor: '#F57300',
     display: 'flex',
     alignItems: 'center',
     marginTop: 30
@@ -126,32 +122,40 @@ const styles = StyleSheet.create({
   textoCaixa: {
     color: 'white',
     margin: 10,
+    fontSize: 30,
+    fontWeight: 'bold',
+    alignSelf: 'flex-start',
+    left: 30
   },
   pesquisador: {
     position: 'absolute',
-    top: 155,
+    top: 80,
     width: '90%',
     height: 220,
-    backgroundColor: 'gray',
+    backgroundColor: '#F4F4F4',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    borderRadius: 30,
+    boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.3)',
   },
   textoPesquisador: {
-    color: 'white',
+    color: '#9D9D9D',
     marginLeft: '3%',
+    top: 3
   },
   titleBox: {
-    backgroundColor: 'gray',
     width: '100%',
-    marginTop: 200,
+    marginTop: 75,
+    display: 'flex',
+    flexDirection: 'row',
   },
   titleText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'orange',
+    color: '#F57300',
     marginLeft: 15,
   }
 });
 
-export default App;
+export default Index;
