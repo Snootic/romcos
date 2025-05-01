@@ -10,7 +10,7 @@ const CarroView = ({ item }: {item: Carro}) => (
       <View style={ styles.carros }>
         <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
         <Image
-          style={ImageStyles.tinyLogo}
+          style={ImageStyles.small}
           source={item.imagem}
           resizeMode="contain"
         />
@@ -23,7 +23,7 @@ const AutodromoView = ({ item }: {item: Autodromo}) => (
         <View style={ styles.carros }>
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
-            style={ImageStyles.tinyLogo}
+            style={ImageStyles.small}
             source={item.imagem}
             resizeMode="contain"
         />
