@@ -223,7 +223,6 @@ const styles = StyleSheet.create({
   },
   carros: {
     marginLeft: 10,
-    marginBottom: 20,
   },
   menu: {
     backgroundColor: '#F4F4F4',
