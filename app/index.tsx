@@ -29,11 +29,12 @@ const Index = () => {
 
   const Carro = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
-      <View>
+      <View style={ styles.carros }>
         <Text style={styles.text}>{item.marca} - {item.modelo}</Text>
         <Image
           style={styles.tinyLogo}
           source={item.imagem}
+          resizeMode="contain"
         />
       </View>
     </Pressable>
@@ -66,15 +67,12 @@ const Index = () => {
         <Text style={styles.titleText}>Veículos populares</Text>
         <Text style={styles.textoPesquisador}>ver mais</Text>
       </View>
-      
-      <SafeAreaView style={styles.container}>
-        <FlatList
+      <FlatList
           data={carroData}
           renderItem={Carro}
           keyExtractor={(item) => item.id}
           horizontal={ true }
-        />
-      </SafeAreaView>
+      />
     </ScrollView>
   );
 };
@@ -107,8 +105,8 @@ const styles = StyleSheet.create({
     lineHeight: 1,
   },
   tinyLogo: {
-    width: 250,
-    height: 180,
+    width: 230,
+    height: 160,
     alignSelf: 'center',
   },
   caixaPesquisa: {
@@ -128,8 +126,7 @@ const styles = StyleSheet.create({
     left: 30
   },
   pesquisador: {
-    position: 'absolute',
-    top: 80,
+    marginTop: -165,
     width: '90%',
     height: 220,
     backgroundColor: '#F4F4F4',
@@ -146,7 +143,7 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     width: '100%',
-    marginTop: 75,
+    marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
   },
@@ -155,6 +152,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#F57300',
     marginLeft: 15,
+  },
+  carros: {
+    marginLeft: 10,
   }
 });
 
