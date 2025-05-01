@@ -33,7 +33,7 @@ const CARRO_DATA = [
     }
 ];
 
-export const AUTODROMO_DATA = [
+const AUTODROMO_DATA = [
     {
       id: '1',
       nome: 'Interlagos',
