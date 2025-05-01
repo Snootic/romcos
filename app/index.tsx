@@ -8,14 +8,18 @@ import {
   Image,
   ScrollView,
   FlatList,
-  SafeAreaView,
 } from 'react-native';
 
 import { Carro }  from '../models/Carro';
-import { getCarros } from '@/services/CarroService';
+import { getCarros } from '../services/CarroService';
 
-import { Autodromo } from '@/models/Autodromo';
-import { getAutodromos } from '@/services/Autodromo';
+import { Autodromo } from '../models/Autodromo';
+import { getAutodromos } from '../services/Autodromo';
+
+import data from './dev/test/customData';
+const { CARRO_DATA, AUTODROMO_DATA } = data;
+
+import Menu from './components/menu';
 
 const Index = () => {
 
@@ -39,6 +43,7 @@ const Index = () => {
         setCarroData([]);
       });
   }, []);
+
 
   const Carro = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
@@ -94,7 +99,8 @@ const Index = () => {
         <Text style={styles.textoPesquisador}>ver mais</Text>
       </View>
       <FlatList
-          data={carroData}
+          // data={carroData}
+          data={CARRO_DATA}
           renderItem={Carro}
           keyExtractor={(item) => item.id}
           horizontal={ true }
@@ -105,42 +111,13 @@ const Index = () => {
         <Text style={styles.textoPesquisador}>ver mais</Text>
       </View>
       <FlatList
-          data={autodromoData}
+          // data={autodromoData}
+          data={AUTODROMO_DATA}
           renderItem={Autodromo}
           keyExtractor={(item) => item.id}
           horizontal={ true }
       />
-
-      <View style={styles.menu}>
-        <Pressable onPress={() => alert( "clicado" ) }>
-          <Image
-            style={styles.menuItem}
-            source = { require('../assets/images/home.png')} 
-            resizeMode="contain"
-          />
-        </Pressable>
-        <Pressable onPress={() => alert( "clicado" ) }>
-          <Image
-            style={styles.menuItem}
-            source = { require('../assets/images/car_menu.png')} 
-            resizeMode="contain"
-          />
-        </Pressable>
-        <Pressable onPress={() => alert( "clicado" ) }>
-          <Image
-            style={styles.menuItem}
-            source = { require('../assets/images/help.webp')} 
-            resizeMode="contain"
-          />
-        </Pressable>
-        <Pressable onPress={() => alert( "clicado" ) }>
-          <Image
-            style={styles.menuItem}
-            source = { require('../assets/images/user.png')} 
-            resizeMode="contain"
-          />
-        </Pressable>
-      </View>
+      <Menu/>
     </ScrollView>
   );
 };
@@ -223,29 +200,7 @@ const styles = StyleSheet.create({
   },
   carros: {
     marginLeft: 10,
-  },
-  menu: {
-    backgroundColor: '#F4F4F4',
-    width: '100%',
-    height: 50,
-    position: 'sticky',
-    display: 'flex',
-    flexDirection: 'row',
-    bottom: 0,
-    justifyContent: 'space-around',
-  },
-  menuItem: {
-    width: 40,
-    height: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    tintColor: '#F57300',
-  },
+  }
 });
 
 export default Index;
