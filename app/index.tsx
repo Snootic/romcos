@@ -76,7 +76,7 @@ const Index = () => {
 
   return (
     <ScrollView contentContainerStyle={DefaultStyles.container}>
-      <View style={styles.caixaPesquisa}>
+      <View style={DefaultStyles.header}>
         <Text style={DefaultStyles.titulo}>ROMCOS</Text>
       </View>
 
@@ -129,14 +129,7 @@ const Index = () => {
 };
 
 const styles = StyleSheet.create({
-  caixaPesquisa: {
-    width: '100%',
-    height: 210,
-    backgroundColor: '#F57300',
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: 30
-  },
+
   pesquisador: {
     marginTop: -165,
     width: '90%',

@@ -53,6 +53,14 @@ const DefaultStyles = StyleSheet.create({
       top: 3,
       textDecorationLine: 'underline',
     },
+    header: {
+      width: '100%',
+      height: 210,
+      backgroundColor: '#F57300',
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: 30
+    },
 });
 
 export default DefaultStyles;
