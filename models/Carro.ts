@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 export interface Carro{
     id: string;
     marca: string;
@@ -9,5 +11,5 @@ export interface Carro{
     km100?: number;
     max_vel?: number;
     desc?: string;
-    imagem: string; // url da imagem
+    imagem?: ImageSourcePropType; // url da imagem
 }

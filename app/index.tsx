@@ -11,113 +11,42 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-//para fazer o carrossel
-//import img1 from '../imgs/01_Honda_Civic_Type-R_Frente_Lateral_Blue_Pearl.png';
+import { Carro }  from '../models/Carro';
+import { getCarros } from '@/services/CarroService';
 
 const App = () => {
-  const caixaPesquisa = {
-    width: '100%',
-    height: '210px',
-    backgroundColor: 'orange',
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: '30px',
-  };
 
-  const textoCaixa = {
-    color: 'white',
-    margin: '10px',
-  };
+  const [carroData, setCarroData] = React.useState<Carro[]>([]);
 
-  const pesquisador = {
-    position: 'absolute',
-    top: '155px',
-    width: '90%',
-    height: '220px',
-    backgroundColor: 'gray',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  };
+  React.useEffect(() => {
+    getCarros()
+      .then((carros) => setCarroData(carros))
+      .catch((error) => {
+        console.error('Erro ao obter carros:', error);
+        setCarroData([]);
+      });
+  }, []);
 
-  const textoPesquisador = {
-    color: 'white',
-    marginLeft: '3%',
-  };
-
-  const titleBox = {
-    backgroundColor: 'gray',
-    width: '100%',
-    marginTop: '200px',
-  };
-
-  const titleText = {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'orange',
-    marginLeft: '15px',
-  };
-
-  //carrossel
-  const imgcarro = {
-    width: 250,
-    height: 100,
-    alignSelf: 'center',
-  };
-
-  const carros = [
-    require('./honda.png'),
-    require('./honda.png'),
-    require('./honda.png'),
-  ];
-
-  const carouselStyle = {
-    display: 'flex',
-    overflowX: 'auto',
-    scrollSnapType: 'x mandatory',
-    scrollbarWidth: 'none', // Firefox
-    WebkitOverflowScrolling: 'touch',
-  };
-
-  const slideStyle = {
-    flex: '0 0 100%',
-    scrollSnapAlign: 'start',
-    position: 'relative',
-  };
-
-  const imageStyle = {
-    width: '100%',
-    height: 'auto',
-    display: 'block',
-  };
-
-  const Personagem = ({ item }) => (
-    <Pressable
-      onPress={() =>
-        alert(
-          item.descricao === '' ? 'Personagem sem descrição' : item.descricao
-        )
-      }>
-      <View style={styles.containerPersonagem}>
+  const Carro = ({ item }: {item: Carro}) => (
+    <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
+      <View>
         <Image
           style={styles.tinyLogo}
-          source={{
-            uri: item.imagem,
-          }}
+          source={item.imagem}
         />
-        <Text style={styles.paragraph}>{item.nome}</Text>
+        <Text style={styles.text}>{item.modelo}</Text>
       </View>
     </Pressable>
   );
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <div style={caixaPesquisa}>
-        <Text style={textoCaixa}>ROMCOS</Text>
-      </div>
+      <View style={styles.caixaPesquisa}>
+        <Text style={styles.textoCaixa}>ROMCOS</Text>
+      </View>
 
-      <div style={pesquisador}>
-        <Text style={textoPesquisador}>Olá Mundo</Text>
+      <View style={styles.pesquisador}>
+        <Text style={styles.textoPesquisador}>Olá Mundo</Text>
         <TextInput
           autoCorrect={false}
           //placeholder={MENSAGEM_EMAIL}
@@ -125,10 +54,10 @@ const App = () => {
           style={styles.textInput}
           clearButtonMode="always"
           //defaultValue={EMAIL}
-          onChangeText={(value) => setUser(value)}
+          // onChangeText={(value) => setUser(value)}
         />
 
-        <Text style={textoPesquisador}>Olá Mundo</Text>
+        <Text style={styles.textoPesquisador}>Olá Mundo</Text>
         <TextInput
           autoCorrect={false}
           //placeholder={MENSAGEM_EMAIL}
@@ -136,19 +65,19 @@ const App = () => {
           style={styles.textInput}
           clearButtonMode="always"
           //defaultValue={EMAIL}
-          onChangeText={(value) => setUser(value)}
+          // onChangeText={(value) => setUser(value)}
         />
-      </div>
-      <div style={titleBox}>
-        <Text style={titleText}>Veículos populares</Text>
-        <Text style={textoPesquisador}>ver mais</Text>
-      </div>
-
+      </View>
+      <View style={styles.titleBox}>
+        <Text style={styles.titleText}>Veículos populares</Text>
+        <Text style={styles.textoPesquisador}>ver mais</Text>
+      </View>
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={DATA}
-          renderItem={Personagem}
+          data={carroData}
+          renderItem={Carro}
           keyExtractor={(item) => item.id}
+          horizontal={ true }
         />
       </SafeAreaView>
     </ScrollView>
@@ -181,6 +110,48 @@ const styles = StyleSheet.create({
     marginTop: '3%',
     lineHeight: 1,
   },
+  tinyLogo: {
+    width: 250,
+    height: 150,
+    alignSelf: 'center',
+  },
+  caixaPesquisa: {
+    width: '100%',
+    height: 210,
+    backgroundColor: 'orange',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 30
+  },
+  textoCaixa: {
+    color: 'white',
+    margin: 10,
+  },
+  pesquisador: {
+    position: 'absolute',
+    top: 155,
+    width: '90%',
+    height: 220,
+    backgroundColor: 'gray',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  textoPesquisador: {
+    color: 'white',
+    marginLeft: '3%',
+  },
+  titleBox: {
+    backgroundColor: 'gray',
+    width: '100%',
+    marginTop: 200,
+  },
+  titleText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'orange',
+    marginLeft: 15,
+  }
 });
 
 export default App;
