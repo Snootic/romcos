@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Index from './app/index';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Index from './app';
+import TrackSelection from './app/trackSelection';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Index'>
         <Stack.Screen name="Index" component={Index} />
+        <Stack.Screen name="TrackSelection" component={TrackSelection} />
       </Stack.Navigator>
     </NavigationContainer>
   );

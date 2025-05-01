@@ -10,7 +10,9 @@ import {
   FlatList,
 } from 'react-native';
 
-import { Carro }  from '../models/Carro';
+import { useNavigation } from '@react-navigation/native';
+
+import { Carro } from '../models/Carro';
 import { getCarros } from '../services/CarroService';
 
 import { Autodromo } from '../models/Autodromo';
@@ -24,10 +26,12 @@ import EntityView from './components/entities';
 import DefaultStyles from './components/styles/default';
 
 const Index = () => {
+  const navigation = useNavigation();
+  console.log(navigation.getState()?.routes);
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
   const [autodromoData, setAutodromoData] = React.useState<Autodromo[]>([]);
-  
+
   const { CARRO_DATA, AUTODROMO_DATA } = data;
   const [CarroView, AutodromoView] = EntityView;
 
@@ -62,6 +66,7 @@ const Index = () => {
           placeholderTextColor="grey"
           style={DefaultStyles.textInput}
           clearButtonMode="always"
+          onChangeText={() => navigation.navigate('trackSelection')}
         />
         <TextInput
           autoCorrect={false}
@@ -78,11 +83,11 @@ const Index = () => {
       </View>
 
       <FlatList
-          // data={carroData}
-          data={CARRO_DATA}
-          renderItem={CarroView}
-          keyExtractor={(item) => item.id}
-          horizontal={ true }
+        // data={carroData}
+        data={CARRO_DATA}
+        renderItem={CarroView}
+        keyExtractor={(item) => item.id}
+        horizontal={true}
       />
 
       <View style={DefaultStyles.titleBox}>
@@ -91,14 +96,14 @@ const Index = () => {
       </View>
 
       <FlatList
-          // data={autodromoData}
-          data={AUTODROMO_DATA}
-          renderItem={AutodromoView}
-          keyExtractor={(item) => item.id}
-          horizontal={ true }
+        // data={autodromoData}
+        data={AUTODROMO_DATA}
+        renderItem={AutodromoView}
+        keyExtractor={(item) => item.id}
+        horizontal={true}
       />
-      
-      <Menu/>
+
+      <Menu />
     </ScrollView>
   );
 };
