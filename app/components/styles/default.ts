@@ -16,7 +16,7 @@ const DefaultStyles = StyleSheet.create({
       width: '90%',
       borderBottomWidth: 2,
       borderBottomColor: '#ccc',
-      color: 'white',
+      color: 'black',
       fontSize: 15,
       height: 40,
       paddingTop: 1,
