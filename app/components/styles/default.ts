@@ -31,10 +31,10 @@ const DefaultStyles = StyleSheet.create({
     titulo: {
       color: 'white',
       margin: 10,
-      fontSize: 30,
+      fontSize: 25,
       fontWeight: 'bold',
       alignSelf: 'flex-start',
-      left: 30
+      left: 10
     },
     titleBox: {
       width: '100%',
