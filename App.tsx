@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Index">
+      <Stack.Navigator>
         <Stack.Screen name="Index" component={Index} />
       </Stack.Navigator>
     </NavigationContainer>
