@@ -14,9 +14,13 @@ import {
 import { Carro }  from '../models/Carro';
 import { getCarros } from '@/services/CarroService';
 
+import { Autodromo } from '@/models/Autodromo';
+import { getAutodromos } from '@/services/Autodromo';
+
 const Index = () => {
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
+  const [autodromoData, setAutodromoData] = React.useState<Autodromo[]>([]);
 
   React.useEffect(() => {
     getCarros()
@@ -27,10 +31,32 @@ const Index = () => {
       });
   }, []);
 
+  React.useEffect(() => {
+    getAutodromos()
+      .then((autodromos) => setAutodromoData(autodromos))
+      .catch((error) => {
+        console.error('Erro ao obter carros:', error);
+        setCarroData([]);
+      });
+  }, []);
+
   const Carro = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
       <View style={ styles.carros }>
         <Text style={styles.text}>{item.marca} - {item.modelo}</Text>
+        <Image
+          style={styles.tinyLogo}
+          source={item.imagem}
+          resizeMode="contain"
+        />
+      </View>
+    </Pressable>
+  );
+
+  const Autodromo = ({ item }: {item: Autodromo}) => (
+    <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
+      <View style={ styles.carros }>
+        <Text style={styles.text}>{item.nome}</Text>
         <Image
           style={styles.tinyLogo}
           source={item.imagem}
@@ -70,6 +96,17 @@ const Index = () => {
       <FlatList
           data={carroData}
           renderItem={Carro}
+          keyExtractor={(item) => item.id}
+          horizontal={ true }
+      />
+
+      <View style={styles.titleBox}>
+        <Text style={styles.titleText}>Autódromos Favoritos</Text>
+        <Text style={styles.textoPesquisador}>ver mais</Text>
+      </View>
+      <FlatList
+          data={autodromoData}
+          renderItem={Autodromo}
           keyExtractor={(item) => item.id}
           horizontal={ true }
       />
@@ -155,6 +192,7 @@ const styles = StyleSheet.create({
   },
   carros: {
     marginLeft: 10,
+    marginBottom: 20,
   }
 });
 
