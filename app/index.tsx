@@ -16,7 +16,7 @@ import { getCarros } from '../services/CarroService';
 import { Autodromo } from '../models/Autodromo';
 import { getAutodromos } from '../services/Autodromo';
 
-import data from './dev/test/customData';
+import data from './dev/customData';
 const { CARRO_DATA, AUTODROMO_DATA } = data;
 
 import Menu from './components/menu';
@@ -98,6 +98,7 @@ const Index = () => {
         <Text style={styles.titleText}>Veículos populares</Text>
         <Text style={styles.textoPesquisador}>ver mais</Text>
       </View>
+
       <FlatList
           // data={carroData}
           data={CARRO_DATA}
