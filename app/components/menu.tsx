@@ -1,9 +1,11 @@
 import { StyleSheet, Pressable, View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Menu() {
+    const navigation = useNavigation();
     return ( 
         <View style={styles.menu}>
-            <Pressable onPress={() => alert( "clicado" ) }>
+            <Pressable onPress={() => navigation.navigate('index')}>
                 <Image
                 style={styles.menuItem}
                 source = { require('../../assets/images/home.png')} 
