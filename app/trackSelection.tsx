@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Menu from './components/menu';
+import Header from './components/header';
 import DefaultStyles from './components/styles/default';
 
 import { View, Text, FlatList, Pressable } from 'react-native';
@@ -13,9 +14,7 @@ const TrackSelection = () => {
 
     return (
         <View style={DefaultStyles.container}>
-            <View style={DefaultStyles.header}>
-                <Text style={DefaultStyles.titulo}>Selecione o Autódromo</Text>
-            </View>
+            <Header title="Selecione o autódromo" />
             <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={AUTODROMO_DATA}

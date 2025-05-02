@@ -19,6 +19,7 @@ import { getAutodromos } from '../services/AutodromoService';
 import data from './dev/customData';
 
 import Menu from './components/menu';
+import Header from './components/header';
 import { CarroView, AutodromoView } from './components/entities';
 
 import DefaultStyles from './components/styles/default';
@@ -50,10 +51,7 @@ const Index = () => {
 
   return (
     <ScrollView contentContainerStyle={DefaultStyles.container} nestedScrollEnabled={true}>
-      <View style={DefaultStyles.header}>
-        <Text style={DefaultStyles.titulo}>ROMCOS</Text>
-      </View>
-
+      <Header title="ROMCOS"/>
       <View style={styles.pesquisador}>
         <TextInput
           autoCorrect={false}

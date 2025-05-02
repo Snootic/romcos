@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from './components/menu';
+import Header from './components/header';
 import DefaultStyles from './components/styles/default';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -20,15 +21,13 @@ export default function Agendamento() {
 
     return (
         <View style={DefaultStyles.container}>
-            <View style={DefaultStyles.header}>
-                <Text style={DefaultStyles.titulo}>Seu agendamento</Text>
-            </View>
+            <Header title="Seu agendamento" />
             <View style={styles.boxContainer}>
-                <Text style={DefaultStyles.titulo}>Total</Text>
-                <Text style={DefaultStyles.titulo}>R$ 0,00</Text>
+                <Text style={[DefaultStyles.textoGrande, {color: "white"}]}>Total</Text>
+                <Text style={[DefaultStyles.textoGrande, {color: "white"}]}>R$ 0,00</Text>
             </View>
             <View style={styles.box}>
-                <Text style={[DefaultStyles.titulo, { color: 'black', alignSelf: 'center' }]}>Retirada</Text>
+                <Text style={DefaultStyles.textoGrande}>Retirada</Text>
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
@@ -38,7 +37,7 @@ export default function Agendamento() {
                     <TimePicker selected={new Date()} onChange={() => {}} />
                 </View>
 
-                <Text style={[DefaultStyles.titulo, { color: 'black', alignSelf: 'center' }]}>Devolução</Text>
+                <Text style={DefaultStyles.textoGrande}>Devolução</Text>
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
@@ -48,7 +47,7 @@ export default function Agendamento() {
                     <TimePicker selected={new Date()} onChange={() => {}} />
                 </View>
 
-                <Text style={[DefaultStyles.titulo, { color: 'black', alignSelf: 'center' }]}>Itens selecionados</Text>
+                <Text style={DefaultStyles.textoGrande}>Itens selecionados</Text>
 
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 20 }}>
                     <TinyCar item={selectedCar} />
@@ -90,5 +89,6 @@ const styles = StyleSheet.create({
         boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.3)',
         zIndex: 1000,
         marginBottom: 50,
+        paddingTop: 20
     }
 })
