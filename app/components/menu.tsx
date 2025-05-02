@@ -8,6 +8,7 @@ export default function Menu() {
                 style={styles.menuItem}
                 source = { require('../../assets/images/home.png')} 
                 resizeMode="contain"
+                tintColor={'#F57300'}
                 />
             </Pressable>
             <Pressable onPress={() => alert( "clicado" ) }>
@@ -15,6 +16,7 @@ export default function Menu() {
                 style={styles.menuItem}
                 source = { require('../../assets/images/car_menu.png')} 
                 resizeMode="contain"
+                tintColor={'#F57300'}
                 />
             </Pressable>
             <Pressable onPress={() => alert( "clicado" ) }>
@@ -22,6 +24,7 @@ export default function Menu() {
                 style={styles.menuItem}
                 source = { require('../../assets/images/help.webp')} 
                 resizeMode="contain"
+                tintColor={'#F57300'}
                 />
             </Pressable>
             <Pressable onPress={() => alert( "clicado" ) }>
@@ -29,6 +32,7 @@ export default function Menu() {
                 style={styles.menuItem}
                 source = { require('../../assets/images/user.png')} 
                 resizeMode="contain"
+                tintColor={'#F57300'}
                 />
             </Pressable>
         </View>
@@ -56,6 +60,5 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        tintColor: '#F57300',
     },
 });
