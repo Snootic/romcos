@@ -62,10 +62,10 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
         />
         <Text style={DetailStyles.descricao}>
             {item.desc}{'\n'}
-            Potência: {item.potencia}{'\n'}
+            Potência: {item.potencia} cavalos{'\n'}
             peso: {item.peso} metros{'\n'}
-            0-100 km/h: {item.km100}{'\n'}
-            Velocidade Máxima: {item.max_vel}{'\n'}
+            0-100 km/h: {item.km100} segundos{'\n'}
+            Velocidade Máxima: {item.max_vel} km/h{'\n'}
             Motor: {item.motor}{'\n'}
         </Text>
     </View>
