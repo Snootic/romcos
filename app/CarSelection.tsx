@@ -19,7 +19,7 @@ const CarSelection = () => {
             <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={CARRO_DATA}
-                renderItem={CarroDetails}
+                renderItem={({ item }) => <CarroDetails item={item} />}
                 keyExtractor={(item) => item.id}
                 horizontal = { true }
                 showsHorizontalScrollIndicator={true}

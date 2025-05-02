@@ -19,7 +19,7 @@ const TrackSelection = () => {
             <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={AUTODROMO_DATA}
-                renderItem={AutodromoDetails}
+                renderItem={({ item }) => <AutodromoDetails item={item} />}
                 keyExtractor={(item) => item.id}
                 horizontal = { true }
                 showsHorizontalScrollIndicator={true}

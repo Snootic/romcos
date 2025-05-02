@@ -81,7 +81,7 @@ const Index = () => {
       <FlatList nestedScrollEnabled={true}
         // data={carroData}
         data={CARRO_DATA}
-        renderItem={CarroView}
+        renderItem={({item}) => <CarroView item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={true}
@@ -95,7 +95,7 @@ const Index = () => {
       <FlatList nestedScrollEnabled={true}
         // data={autodromoData}
         data={AUTODROMO_DATA}
-        renderItem={AutodromoView}
+        renderItem={({item}) => <AutodromoView item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={true}
