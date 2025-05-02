@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 
 const DetailStyles = StyleSheet.create({
     descricao: {
-      fontSize: 12,
+      fontSize: 15,
       color: '#333',
       flexWrap: 'wrap',
-      width: '80%',
+      width: '95%',
       marginLeft: '10%',
       textAlign: 'left',
     }
