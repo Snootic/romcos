@@ -15,7 +15,7 @@ const TrackSelection = () => {
     const { AUTODROMO_DATA } = data;
 
     return (
-        <ScrollView contentContainerstyle={DefaultStyles.container}>
+        <View>
             <View style={DefaultStyles.header}>
                 <Text style={DefaultStyles.titulo}>Selecione o Autódromo</Text>
             </View>
@@ -34,7 +34,7 @@ const TrackSelection = () => {
                 <Text style={DefaultStyles.buttonTwoText}>Mais Informações</Text>
             </Pressable>
             <Menu/>
-        </ScrollView>
+        </View>
     )
 }
 
