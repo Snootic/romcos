@@ -4,8 +4,9 @@ import { Carro } from '../../models/Carro';
 import { Autodromo } from '../../models/Autodromo';
 import DefaultStyles from './styles/default';
 import ImageStyles from './styles/images';
+import DetailStyles from './styles/details';
 
-const CarroView = ({ item }: {item: Carro}) => (
+export const CarroView = ({ item }: {item: Carro}) => (
     <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
       <View style={ styles.carros }>
         <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
@@ -18,7 +19,7 @@ const CarroView = ({ item }: {item: Carro}) => (
     </Pressable>
 );
 
-const AutodromoView = ({ item }: {item: Autodromo}) => (
+export const AutodromoView = ({ item }: {item: Autodromo}) => (
     <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
         <View style={ styles.carros }>
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
@@ -31,15 +32,49 @@ const AutodromoView = ({ item }: {item: Autodromo}) => (
     </Pressable>
 );
 
+export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
+    <View>
+        <Text style={DefaultStyles.textBold}>{item.nome}</Text>
+        <Image
+            style={ImageStyles.big}
+            source={item.imagem}
+            resizeMode="contain"
+        />
+        <Text style={DetailStyles.descricao}>
+            {item.descricao}{'\n'}
+            Localização: {item.localizacao}{'\n'}
+            Tamanho: {item.tamanho} metros{'\n'}
+            Tipo de Pista: {item.tipo_pista}{'\n'}
+            Principais Eventos: {item.principais_eventos?.join(', ')}{'\n'}
+            Infraestrutura: {item.infraestrutura?.join(', ')}{'\n'}
+            Destaque: {item.destaque}
+        </Text>
+    </View>
+);
+
+export const CarroDetails = ({ item }: {item: Carro}) => (
+    <View>
+        <text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</text>
+        <Image
+            style={ImageStyles.big}
+            source={item.imagem}
+            resizeMode="contain"
+        />
+        <Text style={DetailStyles.descricao}>
+            {item.desc}{'\n'}
+            Potência: {item.potencia}{'\n'}
+            peso: {item.peso} metros{'\n'}
+            0-100 km/h: {item.km100}{'\n'}
+            Velocidade Máxima: {item.max_vel}{'\n'}
+            Infraestrutura: {item.motor}{'\n'}
+        </Text>
+    </View>
+);
+
 const styles = StyleSheet.create({
   carros: {
     marginLeft: 10,
   }
 });
 
-const EntityView = [
-    CarroView,
-    AutodromoView
-]
-
-export default EntityView;
+export default { CarroView, AutodromoView, AutodromoDetails, CarroDetails };
