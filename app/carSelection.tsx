@@ -14,7 +14,7 @@ const CarSelection = () => {
     return (
         <View>
             <View style={DefaultStyles.header}>
-                <Text style={DefaultStyles.titulo}>Selecione o Autódromo</Text>
+                <Text style={DefaultStyles.titulo}>Selecione o Carro</Text>
             </View>
             <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
@@ -24,7 +24,7 @@ const CarSelection = () => {
                 horizontal = { true }
                 showsHorizontalScrollIndicator={true}
             />
-            <Pressable onPress={() => alert('Autódromo selecionado')} style={DefaultStyles.buttonOne}>
+            <Pressable onPress={() => alert('Carro selecionado')} style={DefaultStyles.buttonOne}>
                 <Text style={DefaultStyles.buttonOneText}>Selecionar Carro</Text>
             </Pressable>
             <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
