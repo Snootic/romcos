@@ -5,7 +5,7 @@ export default function Menu() {
     const navigation = useNavigation();
     return ( 
         <View style={styles.menu}>
-            <Pressable onPress={() => navigation.navigate('Index')}>
+            <Pressable onPress={() => navigation.navigate('index')}>
                 <Image
                 style={styles.menuItem}
                 source = { require('../../assets/images/home.png')} 
