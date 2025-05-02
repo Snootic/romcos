@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 30,
     boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.3)',
+    alignSelf: 'center',
   },
   textoPesquisador: {
     color: '#9D9D9D',
