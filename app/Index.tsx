@@ -75,7 +75,7 @@ const Index = () => {
 
       <View style={DefaultStyles.titleBox}>
         <Text style={DefaultStyles.titleText}>Veículos populares</Text>
-        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("carSelection")}>ver mais</Text>
+        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("CarSelection")}>ver mais</Text>
       </View>
 
       <FlatList nestedScrollEnabled={true}
@@ -89,7 +89,7 @@ const Index = () => {
 
       <View style={DefaultStyles.titleBox}>
         <Text style={DefaultStyles.titleText}>Autódromos Favoritos</Text>
-        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("trackSelection")}>ver mais</Text>
+        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("TrackSelection")}>ver mais</Text>
       </View>
 
       <FlatList nestedScrollEnabled={true}

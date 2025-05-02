@@ -1,11 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Index from './app/index';
-import TrackSelection from './app/trackSelection';
-import CarSelection from './app/carSelection';
+import Index from './app/Index';
+import TrackSelection from './app/TrackSelection';
+import CarSelection from './app/CarSelection';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Index: undefined;
+  TrackSelection: undefined;
+  CarSelection: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
@@ -19,15 +25,10 @@ const App = () => {
   );
 };
 
-type RootStackParamList = {
-  index: undefined;
-  trackSelection: undefined;
-  carSelection: undefined;
-};
-
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
   }
 }
+
 export default App;
