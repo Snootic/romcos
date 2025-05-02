@@ -33,7 +33,7 @@ export const AutodromoView = ({ item }: {item: Autodromo}) => (
 );
 
 export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
-    <View>
+    <View style={{width: 360}}>
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
             style={ImageStyles.bigTrack}
