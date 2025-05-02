@@ -2,11 +2,8 @@ import React from 'react';
 
 import Menu from './components/menu';
 import DefaultStyles from './components/styles/default';
-import ImageStyles from './components/styles/images';
 
-import { Autodromo } from '../models/Autodromo';
-
-import { View, Text, FlatList, ScrollView, Pressable } from 'react-native';
+import { View, Text, FlatList, Pressable } from 'react-native';
 
 import data from './dev/customData';
 import { AutodromoDetails } from './components/entities';
