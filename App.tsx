@@ -19,4 +19,15 @@ const App = () => {
   );
 };
 
+type RootStackParamList = {
+  index: undefined;
+  trackSelection: undefined;
+  carSelection: undefined;
+};
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
 export default App;
