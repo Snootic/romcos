@@ -60,7 +60,9 @@ const DefaultStyles = StyleSheet.create({
       backgroundColor: '#F57300',
       display: 'flex',
       alignItems: 'center',
-      marginTop: 30
+      marginTop: 30,
+      zIndex: -1000,
+      position: 'relative'
     }
 });
 
