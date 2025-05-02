@@ -16,7 +16,7 @@ import { Carro } from '../models/Carro';
 import { getCarros } from '../services/CarroService';
 
 import { Autodromo } from '../models/Autodromo';
-import { getAutodromos } from '../services/Autodromo';
+import { getAutodromos } from '../services/AutodromoService';
 
 import data from './dev/customData';
 

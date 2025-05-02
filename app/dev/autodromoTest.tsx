@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList, TextInput, Button, Text, StyleSheet, ScrollView } from 'react-native';
 import { Autodromo } from '../../models/Autodromo';
-import { getAutodromos, addAutodromo, updateAutodromo, deleteAutodromo } from '../../services/Autodromo';
+import { getAutodromos, addAutodromo, updateAutodromo, deleteAutodromo } from '../../services/AutodromoService';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
