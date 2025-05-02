@@ -71,6 +71,37 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
     </View>
 );
 
+export const TinyCar = ({ item }: {item: Carro}) => {
+    return(
+        <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
+            <View>
+            <Image
+                style={ImageStyles.tiny}
+                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+                resizeMode="contain"
+            />
+            </View>
+            <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
+        </Pressable>
+    );
+};
+
+export const TinyTrack = ({ item }: {item: Autodromo}) => {
+    return(
+        <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
+            <View>
+            <Image
+                style={ImageStyles.tiny}
+                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+                resizeMode="contain"
+            />
+            </View>
+            <Text style={DefaultStyles.textBold}>{item.nome}</Text>
+        </Pressable>
+    );
+};
+
+
 const styles = StyleSheet.create({
   carros: {
     marginLeft: 10,

@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const ImageStyles = StyleSheet.create({
+    tiny: {
+        width: 150,
+        height: 80,
+        alignSelf: 'center',
+    },
     small: {
         width: 230,
         height: 160,
