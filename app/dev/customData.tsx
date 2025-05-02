@@ -36,7 +36,7 @@ const CARRO_DATA = [
         km100: 4.3,
         max_vel: 250,
         desc: 'Um carro potente e icônico.',
-        imagem: require('../../assets/images/volkswagen.png'),
+        imagem: require('../../assets/images/ferrari.png'),
     },
     {
         id: '4',
