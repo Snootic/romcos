@@ -21,20 +21,17 @@ import { getAutodromos } from '../services/Autodromo';
 import data from './dev/customData';
 
 import Menu from './components/menu';
-import EntityView from './components/entities';
+import { CarroView, AutodromoView } from './components/entities';
 
 import DefaultStyles from './components/styles/default';
 
 const Index = () => {
   const navigation = useNavigation();
-  console.log(navigation.getState()?.routes);
 
   const [carroData, setCarroData] = React.useState<Carro[]>([]);
   const [autodromoData, setAutodromoData] = React.useState<Autodromo[]>([]);
 
   const { CARRO_DATA, AUTODROMO_DATA } = data;
-  const [CarroView, AutodromoView] = EntityView;
-
   React.useEffect(() => {
     getCarros()
       .then((carros) => setCarroData(carros))
@@ -54,7 +51,7 @@ const Index = () => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={DefaultStyles.container}>
+    <ScrollView contentContainerStyle={DefaultStyles.container} nestedScrollEnabled={true}>
       <View style={DefaultStyles.header}>
         <Text style={DefaultStyles.titulo}>ROMCOS</Text>
       </View>
@@ -66,7 +63,6 @@ const Index = () => {
           placeholderTextColor="grey"
           style={DefaultStyles.textInput}
           clearButtonMode="always"
-          onChangeText={() => navigation.navigate('trackSelection')}
         />
         <TextInput
           autoCorrect={false}
@@ -79,28 +75,30 @@ const Index = () => {
 
       <View style={DefaultStyles.titleBox}>
         <Text style={DefaultStyles.titleText}>Veículos populares</Text>
-        <Text style={DefaultStyles.subtitleText}>ver mais</Text>
+        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("carSelection")}>ver mais</Text>
       </View>
 
-      <FlatList
+      <FlatList nestedScrollEnabled={true}
         // data={carroData}
         data={CARRO_DATA}
         renderItem={CarroView}
         keyExtractor={(item) => item.id}
         horizontal={true}
+        showsHorizontalScrollIndicator={true}
       />
 
       <View style={DefaultStyles.titleBox}>
         <Text style={DefaultStyles.titleText}>Autódromos Favoritos</Text>
-        <Text style={DefaultStyles.subtitleText}>ver mais</Text>
+        <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("trackSelection")}>ver mais</Text>
       </View>
 
-      <FlatList
+      <FlatList nestedScrollEnabled={true}
         // data={autodromoData}
         data={AUTODROMO_DATA}
         renderItem={AutodromoView}
         keyExtractor={(item) => item.id}
         horizontal={true}
+        showsHorizontalScrollIndicator={true}
       />
 
       <Menu />
