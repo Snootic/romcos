@@ -54,7 +54,7 @@ export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
 
 export const CarroDetails = ({ item }: {item: Carro}) => (
     <View>
-        <text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</text>
+        <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
         <Image
             style={ImageStyles.bigCar}
             source={item.imagem}
@@ -66,7 +66,7 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
             peso: {item.peso} metros{'\n'}
             0-100 km/h: {item.km100} segundos{'\n'}
             Velocidade Máxima: {item.max_vel} km/h{'\n'}
-            Motor: {item.motor}{'\n'}
+            Motor: {item.motor}
         </Text>
     </View>
 );
