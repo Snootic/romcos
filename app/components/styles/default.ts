@@ -60,10 +60,44 @@ const DefaultStyles = StyleSheet.create({
       backgroundColor: '#F57300',
       display: 'flex',
       alignItems: 'center',
-      marginTop: 30,
+      marginTop: 20,
       zIndex: -1000,
       position: 'relative'
-    }
+    },
+    buttonOne: {
+      backgroundColor: '#F57300',
+      width: '60%',
+      height: 50,
+      borderRadius: 30,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 10,
+      alignSelf: 'center',
+    },
+    buttonOneText: {
+      color: 'white',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
+    buttonTwo: {
+      backgroundColor: 'white',
+      borderColor: '#F57300',
+      borderWidth: 2,
+      width: '60%',
+      height: 50,
+      borderRadius: 30,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 10,
+      alignSelf: 'center',
+    },
+    buttonTwoText: {
+      color: '#F57300',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
 });
 
 export default DefaultStyles;
