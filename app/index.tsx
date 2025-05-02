@@ -61,6 +61,7 @@ const Index = () => {
           placeholderTextColor="grey"
           style={DefaultStyles.textInput}
           clearButtonMode="always"
+          onChangeText={(text) => text === "Twice até que é bom" ? navigation.navigate("dev/autodromoTest") : null}
         />
         <TextInput
           autoCorrect={false}

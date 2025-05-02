@@ -4,6 +4,7 @@ import { Autodromo } from '../../models/Autodromo';
 import { getAutodromos, addAutodromo, updateAutodromo, deleteAutodromo } from '../../services/AutodromoService';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
+import Menu from '../components/menu';
 
 const AutodromoScreen = () => {
   const [autodromos, setAutodromos] = useState<Autodromo[]>([]);
@@ -97,6 +98,7 @@ const AutodromoScreen = () => {
         )}
       />
       </View>
+      <Menu/>
     </ScrollView>
   );
 };
