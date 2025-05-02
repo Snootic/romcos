@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const DefaultStyles = StyleSheet.create({
     container: {
-      backgroundColor: '#FFFFFF',
+      // backgroundColor: '#FFFFFF',
       // alignItems: 'center',
       minHeight: '100%',
     },
