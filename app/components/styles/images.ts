@@ -6,11 +6,16 @@ const ImageStyles = StyleSheet.create({
         height: 160,
         alignSelf: 'center',
     },
-    big: {
+    bigTrack: {
         width: 300,
         height: 300,
         alignSelf: 'center',
     },
+    bigCar: {
+        width: 400,
+        height: 300,
+        alignSelf: 'center',
+    }
 });
 
 export default ImageStyles;

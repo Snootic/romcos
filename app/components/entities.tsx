@@ -36,7 +36,7 @@ export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
     <View>
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
-            style={ImageStyles.big}
+            style={ImageStyles.bigTrack}
             source={item.imagem}
             resizeMode="contain"
         />
@@ -56,7 +56,7 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
     <View>
         <text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</text>
         <Image
-            style={ImageStyles.big}
+            style={ImageStyles.bigCar}
             source={item.imagem}
             resizeMode="contain"
         />
