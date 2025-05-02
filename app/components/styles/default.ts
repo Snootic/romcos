@@ -28,12 +28,11 @@ const DefaultStyles = StyleSheet.create({
       marginTop: '3%',
       lineHeight: 1,
     },
-    titulo: {
-      color: 'white',
-      margin: 10,
+    textoGrande: {
+      color: 'black',
       fontSize: 25,
       fontWeight: 'bold',
-      alignSelf: 'flex-start',
+      alignSelf: 'center',
       left: 10
     },
     titleBox: {
@@ -53,16 +52,6 @@ const DefaultStyles = StyleSheet.create({
       marginLeft: '3%',
       top: 3,
       textDecorationLine: 'underline',
-    },
-    header: {
-      width: '100%',
-      height: 210,
-      backgroundColor: '#F57300',
-      display: 'flex',
-      alignItems: 'center',
-      marginTop: 20,
-      zIndex: -1000,
-      position: 'relative'
     },
     buttonOne: {
       backgroundColor: '#F57300',
