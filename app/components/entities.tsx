@@ -66,7 +66,7 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
             peso: {item.peso} metros{'\n'}
             0-100 km/h: {item.km100}{'\n'}
             Velocidade Máxima: {item.max_vel}{'\n'}
-            Infraestrutura: {item.motor}{'\n'}
+            Motor: {item.motor}{'\n'}
         </Text>
     </View>
 );
