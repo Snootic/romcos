@@ -15,7 +15,7 @@ const TrackSelection = () => {
     const { AUTODROMO_DATA } = data;
 
     return (
-        <View>
+        <View style={DefaultStyles.container}>
             <View style={DefaultStyles.header}>
                 <Text style={DefaultStyles.titulo}>Selecione o Autódromo</Text>
             </View>
