@@ -72,7 +72,7 @@ const DefaultStyles = StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 10,
+      marginBottom: 10,
       alignSelf: 'center',
     },
     buttonOneText: {
@@ -90,7 +90,7 @@ const DefaultStyles = StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 10,
+      marginBottom: 10,
       alignSelf: 'center',
     },
     buttonTwoText: {
