@@ -12,7 +12,7 @@ export const CarroView = ({ item }: {item: Carro}) => (
         <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
         <Image
           style={ImageStyles.small}
-          source={item.imagem}
+          source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
           resizeMode="contain"
         />
       </View>
@@ -25,7 +25,7 @@ export const AutodromoView = ({ item }: {item: Autodromo}) => (
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
             style={ImageStyles.small}
-            source={item.imagem}
+            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
             resizeMode="contain"
         />
         </View>
@@ -37,7 +37,7 @@ export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
         <Text style={DefaultStyles.textBold}>{item.nome}</Text>
         <Image
             style={ImageStyles.bigTrack}
-            source={item.imagem}
+            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
             resizeMode="contain"
         />
         <Text style={DetailStyles.descricao}>
@@ -57,7 +57,7 @@ export const CarroDetails = ({ item }: {item: Carro}) => (
         <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
         <Image
             style={ImageStyles.bigCar}
-            source={item.imagem}
+            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
             resizeMode="contain"
         />
         <Text style={DetailStyles.descricao}>
