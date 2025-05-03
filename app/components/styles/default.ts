@@ -87,6 +87,11 @@ const DefaultStyles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
     },
+    flatList: {
+      flexGrow: 0,
+      marginBottom: 20,
+      marginTop: 10,
+    }
 });
 
 export default DefaultStyles;

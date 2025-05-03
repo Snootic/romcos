@@ -75,7 +75,9 @@ const Index = () => {
         <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("carSelection")}>ver mais</Text>
       </View>
 
-      <FlatList nestedScrollEnabled={true}
+      <FlatList 
+        style={DefaultStyles.flatList} 
+        nestedScrollEnabled={true}
         // data={carroData}
         data={CARRO_DATA}
         renderItem={({item}) => <FrontDisplay item={item} />}
@@ -89,7 +91,9 @@ const Index = () => {
         <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("trackSelection")}>ver mais</Text>
       </View>
 
-      <FlatList nestedScrollEnabled={true}
+      <FlatList
+        style={DefaultStyles.flatList}
+        nestedScrollEnabled={true}
         // data={autodromoData}
         data={AUTODROMO_DATA}
         renderItem={({item}) => <FrontDisplay item={item} />}

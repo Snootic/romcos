@@ -15,7 +15,7 @@ const TrackSelection = () => {
     return (
         <View style={DefaultStyles.container}>
             <Header title="Selecione o autódromo" />
-            <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
+            <FlatList style={[DefaultStyles.flatList, {marginTop: -120}]} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={AUTODROMO_DATA}
                 renderItem={({ item }) => <Details item={item} />}

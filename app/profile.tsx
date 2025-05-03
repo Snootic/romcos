@@ -63,7 +63,7 @@ export default function Profile() {
                 data={autodromosHistorico}
                 renderItem={({ item }) => <ProfileDisplay item={item} />}
                 keyExtractor={(item) => item.id}
-                style={{ height: 'auto'}}
+                style={DefaultStyles.flatList}
                 horizontal={true}
             />
             <Menu />

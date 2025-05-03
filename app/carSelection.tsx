@@ -16,7 +16,7 @@ const CarSelection = () => {
     return (
         <View style={DefaultStyles.container}>
             <Header title="Selecione o carro" />
-            <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
+            <FlatList style={[DefaultStyles.flatList, {marginTop: -120}]}//passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={CARRO_DATA}
                 renderItem={({ item }) => <Details item={item} />}
