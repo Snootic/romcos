@@ -50,8 +50,8 @@ const Index = () => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={DefaultStyles.container} nestedScrollEnabled={true}>
-      <Header title="ROMCOS"/>
+    <><ScrollView contentContainerStyle={DefaultStyles.container} nestedScrollEnabled={true}>
+      <Header title="ROMCOS" />
       <View style={styles.pesquisador}>
         <TextInput
           autoCorrect={false}
@@ -59,15 +59,13 @@ const Index = () => {
           placeholderTextColor="grey"
           style={DefaultStyles.textInput}
           clearButtonMode="always"
-          onChangeText={(text) => text === "Twice até que é bom" ? navigation.navigate("dev/autodromoTest") : null}
-        />
+          onChangeText={(text) => text === "Twice até que é bom" ? navigation.navigate("dev/autodromoTest") : null} />
         <TextInput
           autoCorrect={false}
           placeholder={"Qual carro quer dirigir?"}
           placeholderTextColor="grey"
           style={DefaultStyles.textInput}
-          clearButtonMode="always"
-        />
+          clearButtonMode="always" />
       </View>
 
       <View style={DefaultStyles.titleBox}>
@@ -75,16 +73,15 @@ const Index = () => {
         <Text style={DefaultStyles.subtitleText} onPress={() => navigation.navigate("carSelection")}>ver mais</Text>
       </View>
 
-      <FlatList 
-        style={DefaultStyles.flatList} 
+      <FlatList
+        style={DefaultStyles.flatList}
         nestedScrollEnabled={true}
         // data={carroData}
         data={CARRO_DATA}
-        renderItem={({item}) => <FrontDisplay item={item} />}
+        renderItem={({ item }) => <FrontDisplay item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
-        showsHorizontalScrollIndicator={true}
-      />
+        showsHorizontalScrollIndicator={true} />
 
       <View style={DefaultStyles.titleBox}>
         <Text style={DefaultStyles.titleText}>Autódromos Favoritos</Text>
@@ -96,14 +93,13 @@ const Index = () => {
         nestedScrollEnabled={true}
         // data={autodromoData}
         data={AUTODROMO_DATA}
-        renderItem={({item}) => <FrontDisplay item={item} />}
+        renderItem={({ item }) => <FrontDisplay item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
-        showsHorizontalScrollIndicator={true}
-      />
+        showsHorizontalScrollIndicator={true} />
 
-      <Menu />
-    </ScrollView>
+
+    </ScrollView><Menu /></>
   );
 };
 

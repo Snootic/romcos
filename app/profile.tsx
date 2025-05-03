@@ -3,7 +3,7 @@ import Menu from './components/menu';
 import Header from './components/header';
 import DefaultStyles from './components/styles/default';
 import ImageStyles from './components/styles/images';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, ScrollView } from 'react-native';
 
 import data from './dev/customData';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -46,28 +46,23 @@ export default function Profile() {
     );
 
     return (
-        <SafeAreaView style={DefaultStyles.container}>
-            <Header title="" />
-            {profile}
-            {userInfo}
-            <Text style={[DefaultStyles.textoGrande, { color: "white", textAlign: "center", marginTop: 20 }]}>
-                Histórico de Autódromos
-            </Text>
-            <Text style={styles.clickable}>
-                Alterar Perfil
-            </Text>
-            <Text style={[DefaultStyles.titleText,{alignSelf: "center", fontSize: 25, marginBottom: 30, marginLeft: 0}]}>
-                Suas Preferências
-            </Text>
-            <FlatList
-                data={autodromosHistorico}
-                renderItem={({ item }) => <ProfileDisplay item={item} />}
-                keyExtractor={(item) => item.id}
-                style={DefaultStyles.flatList}
-                horizontal={true}
-            />
-            <Menu />
-        </SafeAreaView>
+    <><ScrollView contentContainerStyle={DefaultStyles.container} nestedScrollEnabled={true}>
+        <Header title="" />
+        {profile}
+        {userInfo}
+        <Text style={styles.clickable}>
+            Alterar Perfil
+        </Text>
+        <Text style={[DefaultStyles.titleText, { alignSelf: "center", fontSize: 25, marginBottom: 30, marginLeft: 0 }]}>
+            Suas Preferências
+        </Text>
+        <FlatList
+            data={autodromosHistorico}
+            renderItem={({ item }) => <ProfileDisplay item={item} />}
+            keyExtractor={(item) => item.id}
+            style={DefaultStyles.flatList}
+            horizontal={true} />
+    </ScrollView><Menu /></>
     );
 }
 

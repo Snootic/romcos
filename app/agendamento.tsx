@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './components/menu';
 import Header from './components/header';
 import DefaultStyles from './components/styles/default';
-import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Platform, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { CustomDatePicker, TimePicker } from './components/customDatePicker';
@@ -36,11 +36,11 @@ export default function Agendamento() {
         )
     }
     return (
-        <View style={DefaultStyles.container}>
+        <><ScrollView contentContainerStyle={DefaultStyles.container}>
             <Header title="Seu agendamento" />
             <View style={styles.boxContainer}>
-                <Text style={[DefaultStyles.textoGrande, {color: "white"}]}>Total</Text>
-                <Text style={[DefaultStyles.textoGrande, {color: "white"}]}>R$ 0,00</Text>
+                <Text style={[DefaultStyles.textoGrande, { color: "white" }]}>Total</Text>
+                <Text style={[DefaultStyles.textoGrande, { color: "white" }]}>R$ 0,00</Text>
             </View>
             <View style={styles.box}>
                 <Text style={DefaultStyles.textoGrande}>Retirada</Text>
@@ -48,7 +48,7 @@ export default function Agendamento() {
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
                 </View>
-                
+
                 {pickers}
 
                 <Text style={DefaultStyles.textoGrande}>Devolução</Text>
@@ -72,8 +72,8 @@ export default function Agendamento() {
             <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
                 <Text style={DefaultStyles.buttonTwoText}>Alterar</Text>
             </Pressable>
-            <Menu />
-        </View>
+        </ScrollView>
+        <Menu /></>
     )
 }
 
