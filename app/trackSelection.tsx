@@ -7,7 +7,7 @@ import DefaultStyles from './components/styles/default';
 import { View, Text, FlatList, Pressable } from 'react-native';
 
 import data from './dev/customData';
-import { AutodromoDetails } from './components/entities';
+import { Details } from './components/entities';
 
 const TrackSelection = () => {
     const { AUTODROMO_DATA } = data;
@@ -18,7 +18,7 @@ const TrackSelection = () => {
             <FlatList style={{marginTop: -120}} //passando marginTop aqui porque passando diretamente na imagem
             // o header acaba a sobrepondo, deixando ela recortada
                 data={AUTODROMO_DATA}
-                renderItem={({ item }) => <AutodromoDetails item={item} />}
+                renderItem={({ item }) => <Details item={item} />}
                 keyExtractor={(item) => item.id}
                 horizontal = { true }
                 showsHorizontalScrollIndicator={true}

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { CustomDatePicker, TimePicker } from './components/customDatePicker';
 
-import { TinyCar, TinyTrack } from './components/entities';
+import { TinyView } from './components/entities';
 
 import { Autodromo } from '../models/Autodromo';
 import { Carro } from '../models/Carro';
@@ -56,14 +56,14 @@ export default function Agendamento() {
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
                 </View>
-                
+
                 {pickers}
 
                 <Text style={DefaultStyles.textoGrande}>Itens selecionados</Text>
 
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 20 }}>
-                    <TinyCar item={selectedCar} />
-                    <TinyTrack item={selectedTrack} />
+                    <TinyView item={selectedCar} />
+                    <TinyView item={selectedTrack} />
                 </View>
             </View>
             <Pressable onPress={() => alert('a')} style={DefaultStyles.buttonOne}>

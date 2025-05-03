@@ -9,7 +9,7 @@ const CARRO_DATA = [
         peso: 1350,
         km100: 8.5,
         max_vel: 210,
-        desc: 'Um carro esportivo e confortável.',
+        descricao: 'Um carro esportivo e confortável.',
         imagem: require('../../assets/images/honda.png'),
     },
     {
@@ -22,7 +22,7 @@ const CARRO_DATA = [
         peso: 1380,
         km100: 10.0,
         max_vel: 180,
-        desc: 'Um carro confiável e econômico.',
+        descricao: 'Um carro confiável e econômico.',
         imagem: require('../../assets/images/nissan.png'),
     },
     {
@@ -35,7 +35,7 @@ const CARRO_DATA = [
         peso: 1720,
         km100: 4.3,
         max_vel: 250,
-        desc: 'Um carro potente e icônico.',
+        descricao: 'Um carro potente e icônico.',
         imagem: require('../../assets/images/ferrari.png'),
     },
     {
@@ -48,7 +48,7 @@ const CARRO_DATA = [
         peso: 1700,
         km100: 4.0,
         max_vel: 290,
-        desc: 'Um carro esportivo com design arrojado.',
+        descricao: 'Um carro esportivo com design arrojado.',
         imagem: require('../../assets/images/honda.png'),
     }
 ];
@@ -104,9 +104,24 @@ const AUTODROMO_DATA = [
     },
 ];
 
+//data de apenas um usuario
+const USUARIO_DATA = [
+    {
+        id: '1',
+        nome: 'João Silva',
+        email: 'joao.silva@example.com',
+        senha: 'senha123',
+        cnh: '12345678900',
+        telefone: '11987654321',
+        historico: ['Interlagos', 'Monza', 'Suzuka'],
+        imagem: "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+    }
+]
+
 const data = {
     CARRO_DATA,
     AUTODROMO_DATA,
+    USUARIO_DATA
 };
   
 export default data;

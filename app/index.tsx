@@ -20,7 +20,7 @@ import data from './dev/customData';
 
 import Menu from './components/menu';
 import Header from './components/header';
-import { CarroView, AutodromoView } from './components/entities';
+import { FrontDisplay } from './components/entities';
 
 import DefaultStyles from './components/styles/default';
 
@@ -78,7 +78,7 @@ const Index = () => {
       <FlatList nestedScrollEnabled={true}
         // data={carroData}
         data={CARRO_DATA}
-        renderItem={({item}) => <CarroView item={item} />}
+        renderItem={({item}) => <FrontDisplay item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={true}
@@ -92,7 +92,7 @@ const Index = () => {
       <FlatList nestedScrollEnabled={true}
         // data={autodromoData}
         data={AUTODROMO_DATA}
-        renderItem={({item}) => <AutodromoView item={item} />}
+        renderItem={({item}) => <FrontDisplay item={item} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={true}

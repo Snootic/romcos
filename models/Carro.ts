@@ -10,6 +10,6 @@ export interface Carro{
     peso?: number;
     km100?: number;
     max_vel?: number;
-    desc?: string;
+    descricao?: string;
     imagem?: ImageSourcePropType; // url da imagem
 }

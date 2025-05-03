@@ -20,6 +20,18 @@ const ImageStyles = StyleSheet.create({
         width: 400,
         height: 300,
         alignSelf: 'center',
+    },
+    profile: {
+        width: 150,
+        height: 150,
+        borderRadius: 300,
+        marginTop: -200,
+        alignSelf: 'center',
+    },
+    display:{
+        width: 200,
+        height: 200,
+        alignSelf: 'center',
     }
 });
 

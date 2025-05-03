@@ -5,4 +5,5 @@ export interface Usuario {
     senha: string;
     cnh: string;
     historico?: string[];
+    imagem?: string;
 }

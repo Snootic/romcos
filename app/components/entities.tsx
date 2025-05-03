@@ -6,23 +6,10 @@ import DefaultStyles from './styles/default';
 import ImageStyles from './styles/images';
 import DetailStyles from './styles/details';
 
-export const CarroView = ({ item }: {item: Carro}) => (
-    <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
-      <View style={ styles.carros }>
-        <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
-        <Image
-          style={ImageStyles.small}
-          source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
-          resizeMode="contain"
-        />
-      </View>
-    </Pressable>
-);
-
-export const AutodromoView = ({ item }: {item: Autodromo}) => (
-    <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
+export const FrontDisplay = ({ item }: {item: Autodromo | Carro}) => (
+    <Pressable onPress={() => alert( item.descricao === '' ? 'Sem descrição' : item.descricao ) }>
         <View style={ styles.carros }>
-        <Text style={DefaultStyles.textBold}>{item.nome}</Text>
+        <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
         <Image
             style={ImageStyles.small}
             source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
@@ -32,15 +19,12 @@ export const AutodromoView = ({ item }: {item: Autodromo}) => (
     </Pressable>
 );
 
-export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
-    <View style={{width: 360}}>
-        <Text style={DefaultStyles.textBold}>{item.nome}</Text>
-        <Image
-            style={ImageStyles.bigTrack}
-            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
-            resizeMode="contain"
-        />
-        <Text style={DetailStyles.descricao}>
+
+export const Details = ({ item }: { item: Autodromo | Carro }) => {
+    let details
+    if ('localizacao' in item) {
+        details = (
+            <Text style={DetailStyles.descricao}>
             {item.descricao}{'\n'}
             Localização: {item.localizacao}{'\n'}
             Tamanho: {item.tamanho} metros{'\n'}
@@ -49,58 +33,60 @@ export const AutodromoDetails = ({ item }: { item: Autodromo }) => (
             Infraestrutura: {item.infraestrutura?.join(', ')}{'\n'}
             Destaque: {item.destaque}
         </Text>
-    </View>
-);
+        )
+    }
+    else {
+        details = (
+            <Text style={DetailStyles.descricao}>
+                {item.descricao}{'\n'}
+                Potência: {item.potencia} cavalos{'\n'}
+                peso: {item.peso} metros{'\n'}
+                0-100 km/h: {item.km100} segundos{'\n'}
+                Velocidade Máxima: {item.max_vel} km/h{'\n'}
+                Motor: {item.motor}
+            </Text>
+        )
+    }
+    return (
+        <View style={{width: 360}}>
+            <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
+            <Image
+            style={'localizacao' in item ? ImageStyles.bigTrack : ImageStyles.bigCar}
+            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+            resizeMode="contain"
+            />
+            {details}
+        </View>
+    )
+};
 
-export const CarroDetails = ({ item }: {item: Carro}) => (
-    <View>
-        <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
+export const TinyView = ({ item }: {item: Autodromo | Carro}) => {
+    return(
+        <Pressable onPress={() => alert( item.descricao === '' ? 'Sem descrição' : item.descricao ) }>
+            <View>
+            <Image
+                style={ImageStyles.tiny}
+                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+                resizeMode="contain"
+            />
+            </View>
+            <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
+        </Pressable>
+    );
+};
+
+export const ProfileDisplay = ({ item }: {item: Autodromo | Carro}) => (
+    <Pressable onPress={() => alert( item.descricao === '' ? 'Sem descrição' : item.descricao ) }>
+        <View style={ styles.carros }>
+        <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
         <Image
-            style={ImageStyles.bigCar}
+            style={ImageStyles.small}
             source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
             resizeMode="contain"
         />
-        <Text style={DetailStyles.descricao}>
-            {item.desc}{'\n'}
-            Potência: {item.potencia} cavalos{'\n'}
-            peso: {item.peso} metros{'\n'}
-            0-100 km/h: {item.km100} segundos{'\n'}
-            Velocidade Máxima: {item.max_vel} km/h{'\n'}
-            Motor: {item.motor}
-        </Text>
-    </View>
+        </View>
+    </Pressable>
 );
-
-export const TinyCar = ({ item }: {item: Carro}) => {
-    return(
-        <Pressable onPress={() => alert( item.desc === '' ? 'Carro sem descrição' : item.desc ) }>
-            <View>
-            <Image
-                style={ImageStyles.tiny}
-                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
-                resizeMode="contain"
-            />
-            </View>
-            <Text style={DefaultStyles.textBold}>{item.marca} - {item.modelo}</Text>
-        </Pressable>
-    );
-};
-
-export const TinyTrack = ({ item }: {item: Autodromo}) => {
-    return(
-        <Pressable onPress={() => alert( item.descricao === '' ? 'Autódromo sem descrição' : item.descricao ) }>
-            <View>
-            <Image
-                style={ImageStyles.tiny}
-                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
-                resizeMode="contain"
-            />
-            </View>
-            <Text style={DefaultStyles.textBold}>{item.nome}</Text>
-        </Pressable>
-    );
-};
-
 
 const styles = StyleSheet.create({
   carros: {
@@ -108,4 +94,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default { CarroView, AutodromoView, AutodromoDetails, CarroDetails };
+export default { FrontDisplay, Details, TinyView, ProfileDisplay };
