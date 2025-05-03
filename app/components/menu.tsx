@@ -30,7 +30,7 @@ export default function Menu() {
                 tintColor={'#F57300'}
                 />
             </Pressable>
-            <Pressable onPress={() => alert( "clicado" ) }>
+            <Pressable onPress={() => navigation.navigate('profile') }>
                 <Image
                 style={styles.menuItem}
                 source = { require('../../assets/images/user.png')} 
