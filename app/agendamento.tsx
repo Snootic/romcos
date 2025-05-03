@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './components/menu';
 import Header from './components/header';
 import DefaultStyles from './components/styles/default';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { CustomDatePicker, TimePicker } from './components/customDatePicker';
@@ -19,6 +19,22 @@ export default function Agendamento() {
     const selectedCar = CustomData.CARRO_DATA[0];
     const selectedTrack = CustomData.AUTODROMO_DATA[0];
 
+    let pickers
+    if (Platform.OS === 'web') {
+        pickers = (
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
+                <CustomDatePicker selected={new Date()} onChange={() => {}} />
+                <TimePicker selected={new Date()} onChange={() => {}} />
+            </View>
+        )
+    }
+    else {
+        pickers = (
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
+
+            </View>
+        )
+    }
     return (
         <View style={DefaultStyles.container}>
             <Header title="Seu agendamento" />
@@ -32,20 +48,16 @@ export default function Agendamento() {
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
                 </View>
-                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                    <CustomDatePicker selected={new Date()} onChange={() => {}} />
-                    <TimePicker selected={new Date()} onChange={() => {}} />
-                </View>
+                
+                {pickers}
 
                 <Text style={DefaultStyles.textoGrande}>Devolução</Text>
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
                     <Text style={DefaultStyles.textBold}>Data</Text>
                     <Text style={DefaultStyles.textBold}>Horário</Text>
                 </View>
-                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                    <CustomDatePicker selected={new Date()} onChange={() => {}} />
-                    <TimePicker selected={new Date()} onChange={() => {}} />
-                </View>
+                
+                {pickers}
 
                 <Text style={DefaultStyles.textoGrande}>Itens selecionados</Text>
 
