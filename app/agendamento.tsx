@@ -22,7 +22,7 @@ export default function Agendamento() {
     let pickers
     if (Platform.OS === 'web') {
         pickers = (
-            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20, zIndex: 100 }}>
                 <CustomDatePicker selected={new Date()} onChange={() => {}} />
                 <TimePicker selected={new Date()} onChange={() => {}} />
             </View>
