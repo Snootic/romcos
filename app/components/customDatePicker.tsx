@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View, TextInput, SafeAreaView, StyleSheet, Platform, Pressable } from 'react-native';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
-import { View, TextInput } from 'react-native';
 
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 interface CustomDatePickerProps {
     selected: Date | null;
     onChange: (date: Date | null) => void;
 }
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
-
     return (
-    <View style={{ width: '50%', marginBottom: 16 }}>
+    <View style={{ width: '48%', marginBottom: 16 }}>
         <>
             <DatePicker
                 selected={selected}
@@ -43,7 +44,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange 
 
 const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
     return (
-        <View style={{ width: '50%', marginBottom: 16 }}>
+        <View style={{ width: '48%', marginBottom: 16 }}>
             <>
                 <DatePicker
                     selected={selected}
@@ -74,4 +75,114 @@ const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => 
         </View>
     );
 }
-export { CustomDatePicker, TimePicker };
+
+const NativeDatePicker = () => {
+    const [date, setDate] = useState(new Date());
+    const [show, setShow] = useState(false);
+  
+    const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
+      if (selectedDate) {
+        const currentDate = selectedDate;
+        setDate(currentDate);
+      }
+      setShow(false);
+    };
+
+    let picker;
+
+    if (Platform.OS === 'android') {
+        picker = () => {
+            DateTimePickerAndroid.open({
+                value: date,
+                onChange: onChange,
+                mode: 'date',
+                is24Hour: true,
+            });
+        }
+    } else {
+        picker = () => {
+            {show && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={date}
+                  mode={'date'}
+                  is24Hour={true}
+                  onChange={onChange}
+                />
+            )}
+        }
+    }
+
+    return (
+        <Pressable onPress={picker} style={{ width: '48%', marginVertical: 16 }}>
+            <TextInput
+            style={styles.pickerInput}
+            value={date.toLocaleDateString()}
+            editable={false} 
+            />
+        </Pressable>
+    );
+}
+
+const NativeTimePicker = () => {
+    const [date, setDate] = useState(new Date());
+    const [show, setShow] = useState(false);
+  
+    const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
+      if (selectedDate) {
+        const currentDate = selectedDate;
+        setDate(currentDate);
+      }
+      setShow(false);
+    };
+
+    let picker;
+
+    if (Platform.OS === 'android') {
+        picker = () => {
+            DateTimePickerAndroid.open({
+                value: date,
+                onChange: onChange,
+                mode: 'time',
+                is24Hour: true,
+                display: 'spinner'
+            });
+        }
+    } else {
+        picker = () => {
+            {show && (
+                <DateTimePicker
+                  value={date}
+                  mode={'time'}
+                  is24Hour={true}
+                  onChange={onChange}
+                  display='spinner'
+                />
+            )}
+        }
+    }
+
+    return (
+        <Pressable onPress={picker} style={{ width: '48%', marginVertical: 16 }}>
+            <TextInput
+            style={styles.pickerInput}
+            value={`${date.getHours().toString()}:${date.getMinutes().toString()}`}
+            editable={false} 
+            />
+        </Pressable>
+    );
+}
+
+const styles = StyleSheet.create({
+    pickerInput: {
+        borderColor: 'grey',
+        borderWidth: 1,
+        borderRadius: 8,
+        fontSize: 16,
+        padding: 2,
+        paddingHorizontal: 10,
+    }
+
+})
+
+export { CustomDatePicker, TimePicker, NativeDatePicker, NativeTimePicker };

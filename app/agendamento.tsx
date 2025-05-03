@@ -5,7 +5,7 @@ import DefaultStyles from './components/styles/default';
 import { View, Text, Pressable, StyleSheet, Platform, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { CustomDatePicker, TimePicker } from './components/customDatePicker';
+import { CustomDatePicker, TimePicker, NativeDatePicker, NativeTimePicker } from './components/customDatePicker';
 
 import { TinyView } from './components/entities';
 
@@ -31,7 +31,8 @@ export default function Agendamento() {
     else {
         pickers = (
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-
+                <NativeDatePicker/>
+                <NativeTimePicker/>
             </View>
         )
     }
