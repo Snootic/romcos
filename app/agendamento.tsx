@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     box: {
         width: '80%',
-        height: '50%',
+        height: '60%',
         alignSelf: 'center',
         backgroundColor: '#F4F4F4',
         marginTop: -20,
