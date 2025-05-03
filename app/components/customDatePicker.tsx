@@ -4,8 +4,6 @@ import { View, TextInput, SafeAreaView, StyleSheet, Platform, Pressable } from '
 
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
-
-import "react-datepicker/dist/react-datepicker.css"; 
 interface CustomDatePickerProps {
     selected: Date | null;
     onChange: (date: Date | null) => void;
