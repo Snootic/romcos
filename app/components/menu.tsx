@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F4F4F4',
         width: '100%',
         height: 50,
-        position: 'sticky',
+        position: 'fixed',
         display: 'flex',
         flexDirection: 'row',
         bottom: 0,
