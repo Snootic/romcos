@@ -1,52 +1,77 @@
 import React, { useState } from 'react';
 import { View, TextInput, SafeAreaView, StyleSheet, Platform, Pressable } from 'react-native';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; 
+
 
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+
+import "react-datepicker/dist/react-datepicker.css"; 
 interface CustomDatePickerProps {
     selected: Date | null;
     onChange: (date: Date | null) => void;
 }
 
-const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
-    return (
-    <View style={{ width: '48%', marginBottom: 16 }}>
-        <>
-            <DatePicker
-                selected={selected}
-                onChange={onChange}
-                dateFormat="dd/MM/yyyy"
-                placeholderText="Selecione o dia e o mês"
-                isClearable
-                // wrapperClassName="date-picker"
-                customInput={
-                <TextInput
-                    style={{
-                        width: '100%',
-                        paddingLeft: 10,
-                        borderRadius: 8,
-                        borderColor: '#D1D5DB',
-                        borderWidth: 1,
-                        height: 40,
-                        color: '#4A5568',
-                    }}
-                    placeholder="Selecione o dia e o mês"
-                    placeholderTextColor="#A0AEC0"
-                />
-                }
-            />
-        </>
-    </View>
-    );
-};
+export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
+    const [DatePicker, setDatePicker] = useState<any>(null);
 
-const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
+    React.useEffect(() => {
+        if (Platform.OS === 'web') {
+            import("react-datepicker").then((module) => {
+                setDatePicker(() => module.default);
+            });
+            import("react-datepicker/dist/react-datepicker.css");
+        }
+    }, []);
+
     return (
         <View style={{ width: '48%', marginBottom: 16 }}>
             <>
-                <DatePicker
+                {DatePicker && (
+                    <DatePicker
+                        selected={selected}
+                        onChange={onChange}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Selecione o dia e o mês"
+                        isClearable
+                        customInput={
+                            <TextInput
+                                style={{
+                                    width: '100%',
+                                    paddingLeft: 10,
+                                    borderRadius: 8,
+                                    borderColor: '#D1D5DB',
+                                    borderWidth: 1,
+                                    height: 40,
+                                    color: '#4A5568',
+                                }}
+                                placeholder="Selecione o dia e o mês"
+                                placeholderTextColor="#A0AEC0"
+                            />
+                        }
+                    />
+                )}
+            </>
+        </View>
+    );
+};
+
+export const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
+    const [DatePicker, setDatePicker] = useState<any>(null);
+
+    React.useEffect(() => {
+        if (Platform.OS === 'web') {
+            import("react-datepicker").then((module) => {
+                setDatePicker(() => module.default);
+            });
+            import("react-datepicker/dist/react-datepicker.css");
+        }
+    }, []);
+    
+    return (
+        <View style={{ width: '48%', marginBottom: 16 }}>
+            <>
+                {DatePicker && (
+                    <DatePicker
                     selected={selected}
                     onChange={onChange}
                     dateFormat="HH:mm"
@@ -71,6 +96,8 @@ const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => 
                     />
                     }
                 />
+                )
+            }
             </>
         </View>
     );
@@ -88,30 +115,27 @@ const NativeDatePicker = () => {
       setShow(false);
     };
 
-    let picker;
-
-    if (Platform.OS === 'android') {
-        picker = () => {
+    const picker = () => {
+        if (Platform.OS === 'android') {
             DateTimePickerAndroid.open({
                 value: date,
                 onChange: onChange,
                 mode: 'date',
                 is24Hour: true,
             });
-        }
-    } else {
-        picker = () => {
+        } else {
             {show && (
                 <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={'date'}
-                  is24Hour={true}
-                  onChange={onChange}
+                    testID="dateTimePicker"
+                    value={date}
+                    mode={'date'}
+                    is24Hour={true}
+                    onChange={onChange}
                 />
             )}
         }
     }
+    
 
     return (
         <Pressable onPress={picker} style={{ width: '48%', marginVertical: 16 }}>
@@ -136,10 +160,8 @@ const NativeTimePicker = () => {
       setShow(false);
     };
 
-    let picker;
-
-    if (Platform.OS === 'android') {
-        picker = () => {
+    const picker = () => {
+        if (Platform.OS === 'android') {
             DateTimePickerAndroid.open({
                 value: date,
                 onChange: onChange,
@@ -147,16 +169,14 @@ const NativeTimePicker = () => {
                 is24Hour: true,
                 display: 'spinner'
             });
-        }
-    } else {
-        picker = () => {
+        } else {
             {show && (
                 <DateTimePicker
-                  value={date}
-                  mode={'time'}
-                  is24Hour={true}
-                  onChange={onChange}
-                  display='spinner'
+                value={date}
+                mode={'time'}
+                is24Hour={true}
+                onChange={onChange}
+                display='spinner'
                 />
             )}
         }
@@ -185,4 +205,4 @@ const styles = StyleSheet.create({
 
 })
 
-export { CustomDatePicker, TimePicker, NativeDatePicker, NativeTimePicker };
+export { NativeDatePicker, NativeTimePicker };
