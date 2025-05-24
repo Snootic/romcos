@@ -23,7 +23,7 @@ const CARRO_DATA = [
         km100: 10.0,
         max_vel: 180,
         descricao: 'Um carro confiável e econômico.',
-        imagem: require('../../assets/images/nissan.png'),
+        imagem: require('../../assets/images/corolla.png'),
     },
     {
         id: '3',
@@ -36,7 +36,7 @@ const CARRO_DATA = [
         km100: 4.3,
         max_vel: 250,
         descricao: 'Um carro potente e icônico.',
-        imagem: require('../../assets/images/ferrari.png'),
+        imagem: require('../../assets/images/mustang.png'),
     },
     {
         id: '4',
@@ -49,7 +49,7 @@ const CARRO_DATA = [
         km100: 4.0,
         max_vel: 290,
         descricao: 'Um carro esportivo com design arrojado.',
-        imagem: require('../../assets/images/honda.png'),
+        imagem: require('../../assets/images/camaro.png'),
     }
 ];
 
@@ -75,7 +75,7 @@ const AUTODROMO_DATA = [
         infraestrutura: ['Arquibancadas', 'Boxes', 'Museu', 'Restaurantes'],
         localizacao: 'Monza, Itália',
         destaque: 'Conhecido como o "Templo da Velocidade"',
-        imagem: require('../../assets/images/interlagos.png'),
+        imagem: require('../../assets/images/monza.png'),
         descricao: 'Conhecido como o "Templo da Velocidade", é um dos circuitos mais rápidos.',
     },
     {
@@ -87,7 +87,7 @@ const AUTODROMO_DATA = [
         infraestrutura: ['Arquibancadas', 'Boxes', 'Centro de visitantes', 'Restaurantes'],
         localizacao: 'Northamptonshire, Reino Unido',
         destaque: 'O berço da Fórmula 1',
-        imagem: require('../../assets/images/interlagos.png'),
+        imagem: require('../../assets/images/silverstone.png'),
         descricao: 'O berço da Fórmula 1, com curvas icônicas como Maggots e Becketts.',
     },
     {
@@ -99,7 +99,7 @@ const AUTODROMO_DATA = [
         infraestrutura: ['Arquibancadas', 'Boxes', 'Parque temático', 'Restaurantes'],
         localizacao: 'Suzuka, Japão',
         destaque: 'Famoso pela curva em "S"',
-        imagem: require('../../assets/images/interlagos.png'),
+        imagem: require('../../assets/images/suzuka.png'),
         descricao: 'Um circuito técnico e desafiador, famoso pela curva em "S".',
     },
 ];
