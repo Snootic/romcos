@@ -85,6 +85,7 @@ export const Details = ({ item }: { item: Autodromo | Carro }) => {
 
 export const Perks = ({ item }: { item: Autodromo | Carro }) => {
     let details
+    let isCar = true
     const navigation = useNavigation();
     details = (
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
@@ -95,16 +96,14 @@ export const Perks = ({ item }: { item: Autodromo | Carro }) => {
             ))}
         </View>
     )
+
+    if ('localizacao' in item) {
+        isCar = false;
+    }
     return (
         <View style={{marginBottom: 20}}>
             <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
-            <Image
-            style={'localizacao' in item ? ImageStyles.bigTrack : ImageStyles.bigCar}
-            source={Array.isArray(item.imagem) 
-                ? (typeof item.imagem[0] === 'string' ? { uri: item.imagem[0] } : item.imagem[0])
-                : (typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem)}
-            resizeMode="contain"
-            />
+            {RenderImage(item.imagem || [], isCar)}
             {details}
             <Pressable onPress={() => {
                 if ('localizacao' in item) {
