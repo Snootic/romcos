@@ -29,6 +29,10 @@ export default function Profile() {
                 <Text style={styles.textoCinzaMedio}>{usuario.cnh}</Text>
             </View>
             <View style={styles.infoBox}>
+                <Text style={styles.textoCinzaMedio}>Gênero</Text>
+                <Text style={styles.textoCinzaMedio}>{usuario.genero}</Text>
+            </View>
+            <View style={styles.infoBox}>
                 <Text style={styles.textoCinzaMedio}>Telefone</Text>
                 <Text style={styles.textoCinzaMedio}>{usuario.telefone}</Text>
             </View>
@@ -78,6 +82,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 20,
+        borderColor: 'grey',
+        borderBottomWidth: 2,
+        paddingBottom: 10
     },
     textoCinzaMedio: {
       color: 'grey',
