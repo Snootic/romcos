@@ -7,14 +7,21 @@ import CarSelection from './app/carSelection';
 import AutodromoScreen from './app/dev/autodromoTest';
 import Agendamento from './app/agendamento';
 import Profile from './app/profile';
+import ViewCar from './app/viewCar';
+import ViewAutodromo from './app/viewAutodromo';
 
-type RootStackParamList = {
+import { Carro } from './models/Carro';
+import { Autodromo } from './models/Autodromo';
+
+export type RootStackParamList = {
   index: undefined;
   trackSelection: undefined;
   carSelection: undefined;
   agendamento: undefined;
   profile: undefined;
   autodromoScreen: undefined;
+  viewCar: { carro: Carro };
+  viewAutodromo: { autodromo: Autodromo}
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,6 +36,8 @@ const App = () => {
         <Stack.Screen name="agendamento" component={Agendamento} />
         <Stack.Screen name="profile" component={Profile} />
         <Stack.Screen name="autodromoScreen" component={AutodromoScreen} />
+        <Stack.Screen name="viewCar" component={ViewCar} />
+        <Stack.Screen name="viewAutodromo" component={ViewAutodromo} />
       </Stack.Navigator>
     </NavigationContainer>
   );

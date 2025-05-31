@@ -7,7 +7,7 @@ import DefaultStyles from './components/styles/default';
 import { View, Text, FlatList, Pressable, ScrollView } from 'react-native';
 
 import data from './dev/customData';
-import { Details } from './components/entities';
+import { Perks } from './components/entities';
 
 const TrackSelection = () => {
     const { AUTODROMO_DATA } = data;
@@ -18,16 +18,10 @@ const TrackSelection = () => {
             <FlatList style={[DefaultStyles.flatList, { marginTop: -120 }]} //passando marginTop aqui porque passando diretamente na imagem
                 // o header acaba a sobrepondo, deixando ela recortada
                 data={AUTODROMO_DATA}
-                renderItem={({ item }) => <Details item={item} />}
+                renderItem={({ item }) => <Perks item={item} />}
                 keyExtractor={(item) => item.id}
-                horizontal={true}
+                horizontal={false}
                 showsHorizontalScrollIndicator={true} />
-            <Pressable onPress={() => alert('Autódromo selecionado')} style={DefaultStyles.buttonOne}>
-                <Text style={DefaultStyles.buttonOneText}>Selecionar Autódromo</Text>
-            </Pressable>
-            <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
-                <Text style={DefaultStyles.buttonTwoText}>Mais Informações</Text>
-            </Pressable>
         </ScrollView><Menu /></>
     )
 }
