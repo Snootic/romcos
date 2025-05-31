@@ -11,5 +11,6 @@ export interface Carro{
     km100?: number;
     max_vel?: number;
     descricao?: string;
-    imagem?: ImageSourcePropType; // url da imagem
+    imagem?: ImageSourcePropType[]; // url da imagem
+    traits?: string[];
 }

@@ -7,6 +7,7 @@ export interface Autodromo{
     infraestrutura?: string[];
     localizacao: string;
     destaque?: string;
-    imagem?: string;
-    descricao?: string
+    imagem?: string[];
+    descricao?: string,
+    traits?: string[],
 }
