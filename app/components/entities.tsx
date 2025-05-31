@@ -1,10 +1,33 @@
-import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Image, Pressable, StyleSheet, FlatList, ImageSourcePropType } from 'react-native';
 
 import { Carro } from '../../models/Carro';
 import { Autodromo } from '../../models/Autodromo';
 import DefaultStyles from './styles/default';
 import ImageStyles from './styles/images';
 import DetailStyles from './styles/details';
+import PerkStyles from './styles/perks';
+
+import { useNavigation } from '@react-navigation/native';
+
+const RenderImage = (images: string[] | ImageSourcePropType[], isCar: boolean = true) => {
+    const renderItem = ({ item }: { item: string | ImageSourcePropType }) => (
+        <Image
+            style={isCar === true ? ImageStyles.bigCar: ImageStyles.bigTrack}
+            source={typeof item === 'string' ? { uri: item } : item}
+            resizeMode="contain"
+        />
+    );
+
+    return (
+        <FlatList
+            data={images as (string | ImageSourcePropType)[]}
+            renderItem={renderItem}
+            keyExtractor={(_, index) => index.toString()}
+            horizontal={true}
+            showsHorizontalScrollIndicator={true}
+        />
+    );
+};
 
 export const FrontDisplay = ({ item }: {item: Autodromo | Carro}) => (
     <Pressable onPress={() => alert( item.descricao === '' ? 'Sem descrição' : item.descricao ) }>
@@ -12,7 +35,9 @@ export const FrontDisplay = ({ item }: {item: Autodromo | Carro}) => (
         <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
         <Image
             style={ImageStyles.small}
-            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+            source={Array.isArray(item.imagem) 
+                ? (typeof item.imagem[0] === 'string' ? { uri: item.imagem[0] } : item.imagem[0])
+                : (typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem)}
             resizeMode="contain"
         />
         </View>
@@ -21,7 +46,8 @@ export const FrontDisplay = ({ item }: {item: Autodromo | Carro}) => (
 
 
 export const Details = ({ item }: { item: Autodromo | Carro }) => {
-    let details
+    let details;
+    let isCar = true;
     if ('localizacao' in item) {
         details = (
             <Text style={DetailStyles.descricao}>
@@ -34,6 +60,7 @@ export const Details = ({ item }: { item: Autodromo | Carro }) => {
             Destaque: {item.destaque}
         </Text>
         )
+        isCar = false;
     }
     else {
         details = (
@@ -48,14 +75,46 @@ export const Details = ({ item }: { item: Autodromo | Carro }) => {
         )
     }
     return (
-        <View style={{width: 360}}>
+        <View>
+            <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
+            {RenderImage(item.imagem || [], isCar)}
+            {details}
+        </View>
+    )
+};
+
+export const Perks = ({ item }: { item: Autodromo | Carro }) => {
+    let details
+    const navigation = useNavigation();
+    details = (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+            {item.traits?.map((trait, index) => (
+                <Pressable key={index} style={PerkStyles.perk}>
+                    <Text style={{fontSize: 13}}>{trait}</Text>
+                </Pressable>
+            ))}
+        </View>
+    )
+    return (
+        <View style={{marginBottom: 20}}>
             <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
             <Image
             style={'localizacao' in item ? ImageStyles.bigTrack : ImageStyles.bigCar}
-            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+            source={Array.isArray(item.imagem) 
+                ? (typeof item.imagem[0] === 'string' ? { uri: item.imagem[0] } : item.imagem[0])
+                : (typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem)}
             resizeMode="contain"
             />
             {details}
+            <Pressable onPress={() => {
+                if ('localizacao' in item) {
+                    navigation.navigate('viewAutodromo', { autodromo: item });
+                } else {
+                    navigation.navigate('viewCar', { carro: item });
+                }
+            }} style={DefaultStyles.buttonOne}>
+                <Text style={DefaultStyles.buttonOneText}>Ver mais informações</Text>
+            </Pressable>
         </View>
     )
 };
@@ -66,7 +125,9 @@ export const TinyView = ({ item }: {item: Autodromo | Carro}) => {
             <View>
             <Image
                 style={ImageStyles.tiny}
-                source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+                source={Array.isArray(item.imagem) 
+                ? (typeof item.imagem[0] === 'string' ? { uri: item.imagem[0] } : item.imagem[0])
+                : (typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem)}
                 resizeMode="contain"
             />
             </View>
@@ -81,7 +142,9 @@ export const ProfileDisplay = ({ item }: {item: Autodromo | Carro}) => (
         <Text style={DefaultStyles.textBold}>{'nome' in item ? item.nome : `${item.marca} - ${item.modelo}`}</Text>
         <Image
             style={ImageStyles.small}
-            source={typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem}
+            source={Array.isArray(item.imagem) 
+                ? (typeof item.imagem[0] === 'string' ? { uri: item.imagem[0] } : item.imagem[0])
+                : (typeof item.imagem === 'string' ? { uri: item.imagem } : item.imagem)}
             resizeMode="contain"
         />
         </View>

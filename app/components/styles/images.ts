@@ -17,8 +17,8 @@ const ImageStyles = StyleSheet.create({
         alignSelf: 'center',
     },
     bigCar: {
-        width: 400,
-        height: 300,
+        width: 380,
+        height: 200,
         alignSelf: 'center',
     },
     profile: {
