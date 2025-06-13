@@ -20,17 +20,17 @@ export default function Payment() {
             <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Pix</Text>
             <Pressable style={styles.itemBox}>
                 <Image source={require('../assets/images/pix.png')} style={styles.icon} />
-                <view style={styles.Textos}>
+                <View style={styles.Textos}>
                     <Text style={[DefaultStyles.textBold, {textAlign: 'left'}]}>Pix</Text>
                     <Text>Aprovação imediata</Text>
-                </view>
+                </View>
             </Pressable>
             <Pressable style={styles.itemBox}>
                 <Image source={require('../assets/images/barcode.png')} style={styles.icon} />
-                <view style={styles.Textos}>
+                <View style={styles.Textos}>
                     <Text style={[DefaultStyles.textBold, {textAlign: 'left'}]}>Boleto</Text>
                     <Text>Aprovação em 1 a 2 dias úteis</Text>
-                </view>
+                </View>
             </Pressable>
         </ScrollView>
         <Menu /></>

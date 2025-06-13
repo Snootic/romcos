@@ -37,29 +37,28 @@ export default function UserSchedules() {
             <Header title="Seus agendamentos" />
             <Text style={[DefaultStyles.titleText, {marginTop: -130, color: 'black'}]}>Em andamento</Text>
             <View style={styles.boxContainer}>
-                <view style={styles.itemBox}>
-                    
-                    <view style={styles.elementsBox}>
+                <View style={styles.itemBox}>
+                    <View style={styles.elementsBox}>
                         <TinyView item={selectedCar} />
-                    </view>
-                    <view style={styles.elementsBox}>
+                    </View>
+                    <View style={styles.elementsBox}>
                         <Text style={DefaultStyles.textBold}>Data de retirada</Text>
                         {pickers}
                         <Text style={DefaultStyles.textBold}>Data de Devolução</Text>
                         {pickers}
-                    </view>
-                </view>
-                <view style={styles.itemBox}>
-                    <view style={styles.elementsBox}>
+                    </View>
+                </View>
+                <View style={styles.itemBox}>
+                    <View style={styles.elementsBox}>
                         <TinyView item={selectedTrack} />
-                    </view>
-                    <view style={styles.elementsBox}>
+                    </View>
+                    <View style={styles.elementsBox}>
                         <Text style={DefaultStyles.textBold}>Data de retirada</Text>
                         {pickers}
                         <Text style={DefaultStyles.textBold}>Data de Devolução</Text>
                         {pickers}
-                    </view>
-                </view>
+                    </View>
+                </View>
             </View>
             <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Finalizados</Text>
         </ScrollView>
