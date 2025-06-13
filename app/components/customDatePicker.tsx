@@ -7,9 +7,11 @@ import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 interface CustomDatePickerProps {
     selected: Date | null;
     onChange: (date: Date | null) => void;
+    isClearable: boolean;
+    readonly: boolean;
 }
 
-export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
+export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange, isClearable, readonly }) => {
     const [DatePicker, setDatePicker] = useState<any>(null);
 
     React.useEffect(() => {
@@ -30,7 +32,8 @@ export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, on
                         onChange={onChange}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Selecione o dia e o mês"
-                        isClearable
+                        isClearable = {isClearable}
+                        readOnly = {readonly}
                         customInput={
                             <TextInput
                                 style={{
@@ -53,7 +56,7 @@ export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selected, on
     );
 };
 
-export const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange }) => {
+export const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange ,isClearable, readonly }) => {
     const [DatePicker, setDatePicker] = useState<any>(null);
 
     React.useEffect(() => {
@@ -77,7 +80,8 @@ export const TimePicker: React.FC<CustomDatePickerProps> = ({ selected, onChange
                     showTimeSelectOnly={true}
                     timeIntervals={15}
                     placeholderText="Selecione o horário"
-                    isClearable
+                    isClearable = {isClearable}
+                    readOnly = {readonly}
                     customInput={
                     <TextInput
                         style={{
