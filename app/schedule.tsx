@@ -14,7 +14,7 @@ import { Carro } from '../models/Carro';
 
 import CustomData from './dev/customData';
 
-export default function Agendamento() {
+export default function Schedule() {
     const navigation = useNavigation();
     const selectedCar = CustomData.CARRO_DATA[0];
     const selectedTrack = CustomData.AUTODROMO_DATA[0];
@@ -23,8 +23,8 @@ export default function Agendamento() {
     if (Platform.OS === 'web') {
         pickers = (
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20, zIndex: 100 }}>
-                <CustomDatePicker selected={new Date()} onChange={() => {}} />
-                <TimePicker selected={new Date()} onChange={() => {}} />
+                <CustomDatePicker selected={new Date()} onChange={() => {}} isClearable={true} readonly={false} />
+                <TimePicker selected={new Date()} onChange={() => {}} isClearable={true} readonly={false}/>
             </View>
         )
     }
