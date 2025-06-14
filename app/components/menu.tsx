@@ -14,7 +14,7 @@ export default function Menu() {
                 tintColor={'#F57300'}
                 />
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('agendamento') }>
+            <Pressable onPress={() => navigation.navigate('userSchedules') }>
                 <Image
                 style={styles.menuItem}
                 source = { require('../../assets/images/car_menu.png')} 
@@ -22,10 +22,10 @@ export default function Menu() {
                 tintColor={'#F57300'}
                 />
             </Pressable>
-            <Pressable onPress={() => alert( "clicado" ) }>
+            <Pressable onPress={() => navigation.navigate('confirmSchedule') }>
                 <Image
                 style={styles.menuItem}
-                source = { require('../../assets/images/help.webp')} 
+                source = { require('../../assets/images/cart.png')} 
                 resizeMode="contain"
                 tintColor={'#F57300'}
                 />
