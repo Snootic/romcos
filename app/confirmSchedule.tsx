@@ -81,7 +81,7 @@ export default function ConfirmSchedule() {
                     <Text style={[DefaultStyles.textBold, {marginLeft: 20}]}>Total</Text>
                     <Text style={[DefaultStyles.titleText, {marginRight: 20}]}>R$1000</Text>
                 </View>
-                <Pressable onPress={() => alert('Confirmado!')} style={DefaultStyles.buttonOne}>
+                <Pressable onPress={() => navigation.navigate('payment')} style={DefaultStyles.buttonOne}>
                     <Text style={DefaultStyles.buttonOneText}>Agendar</Text>
                 </Pressable>
                 <Pressable onPress={() => navigation.navigate('carSelection')} style={DefaultStyles.buttonTwo}>

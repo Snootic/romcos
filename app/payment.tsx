@@ -12,10 +12,12 @@ export default function Payment() {
             <Pressable style={styles.itemBox}>
                 <Image source={require('../assets/images/card.png')} style={styles.icon} />
                 <Text style={DefaultStyles.textBold}>Cartão de crédito</Text>
+                <Image source={require('../assets/images/arrow.png')} style={styles.arrow} />
             </Pressable>
             <Pressable style={styles.itemBox}>
                 <Image source={require('../assets/images/card.png')} style={styles.icon} />
                 <Text style={DefaultStyles.textBold}>Cartão de débito</Text>
+                <Image source={require('../assets/images/arrow.png')} style={styles.arrow} />
             </Pressable>
             <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Pix</Text>
             <Pressable style={styles.itemBox}>
@@ -24,6 +26,7 @@ export default function Payment() {
                     <Text style={[DefaultStyles.textBold, {textAlign: 'left'}]}>Pix</Text>
                     <Text>Aprovação imediata</Text>
                 </View>
+                <Image source={require('../assets/images/arrow.png')} style={styles.arrow} />
             </Pressable>
             <Pressable style={styles.itemBox}>
                 <Image source={require('../assets/images/barcode.png')} style={styles.icon} />
@@ -31,6 +34,7 @@ export default function Payment() {
                     <Text style={[DefaultStyles.textBold, {textAlign: 'left'}]}>Boleto</Text>
                     <Text>Aprovação em 1 a 2 dias úteis</Text>
                 </View>
+                <Image source={require('../assets/images/arrow.png')} style={styles.arrow} />
             </Pressable>
         </ScrollView>
         <Menu /></>
@@ -59,5 +63,12 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         marginRight: 10
+    },
+    arrow: {
+        width: 20,
+        height: 20,
+        marginRight: 10,
+        alignSelf: 'center',
+        marginLeft: 'auto'
     }
 })
