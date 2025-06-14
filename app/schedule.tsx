@@ -23,8 +23,8 @@ export default function Schedule() {
     if (Platform.OS === 'web') {
         pickers = (
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20, zIndex: 100 }}>
-                <CustomDatePicker selected={new Date()} onChange={() => {}} isClearable={true} readonly={false} />
-                <TimePicker selected={new Date()} onChange={() => {}} isClearable={true} readonly={false}/>
+                <CustomDatePicker selected={new Date()} onChange={() => {}} isClearable={false} readonly={true} />
+                <TimePicker selected={new Date()} onChange={() => {}} isClearable={false} readonly={true}/>
             </View>
         )
     }
