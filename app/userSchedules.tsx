@@ -36,7 +36,9 @@ export default function UserSchedules() {
         <><ScrollView contentContainerStyle={DefaultStyles.container}>
             <Header title="Seus agendamentos" />
             <Text style={[DefaultStyles.titleText, {marginTop: -130, color: 'black'}]}>Em andamento</Text>
-            <View style={styles.boxContainer}>
+            <Pressable 
+                style={styles.boxContainer}
+                onPress={() => navigation.navigate('schedule')}>
                 <View style={styles.itemBox}>
                     <View style={styles.elementsBox}>
                         <TinyView item={selectedCar} />
@@ -59,8 +61,8 @@ export default function UserSchedules() {
                         {pickers}
                     </View>
                 </View>
-            </View>
-            <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Finalizados</Text>
+            </Pressable>
+            <Text style={[DefaultStyles.titleText, {color: 'black', marginTop: 40}]}>Finalizados</Text>
         </ScrollView>
         <Menu /></>
     )
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     boxContainer: {
         borderRadius: 20, 
         width: '90%',
-        height: '80%',
+        height: '65%',
         // marginTop: -120,
         alignSelf: 'center',
         display: 'flex',

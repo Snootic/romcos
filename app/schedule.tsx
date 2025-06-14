@@ -41,7 +41,7 @@ export default function Schedule() {
             <Header title="Seu agendamento" />
             <View style={styles.boxContainer}>
                 <Text style={[DefaultStyles.textoGrande, { color: "white" }]}>Total</Text>
-                <Text style={[DefaultStyles.textoGrande, { color: "white" }]}>R$ 0,00</Text>
+                <Text style={[DefaultStyles.textoGrande, { color: "white" }]}>R$ 800,00</Text>
             </View>
             <View style={styles.box}>
                 <Text style={DefaultStyles.textoGrande}>Retirada</Text>
@@ -67,12 +67,12 @@ export default function Schedule() {
                     <TinyView item={selectedTrack} />
                 </View>
             </View>
-            <Pressable onPress={() => alert('a')} style={DefaultStyles.buttonOne}>
-                <Text style={DefaultStyles.buttonOneText}>Agendar</Text>
+            <Pressable onPress={() => alert('Cancelado!!!')} style={DefaultStyles.buttonOne}>
+                <Text style={DefaultStyles.buttonOneText}>Cancelar Agendamento</Text>
             </Pressable>
-            <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
+            {/* <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
                 <Text style={DefaultStyles.buttonTwoText}>Alterar</Text>
-            </Pressable>
+            </Pressable> */}
         </ScrollView>
         <Menu /></>
     )
