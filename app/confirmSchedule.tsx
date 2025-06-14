@@ -43,6 +43,7 @@ export default function ConfirmSchedule() {
                 <NativeTimePicker/>
             </View>
         )
+        pickersDevolucao = pickersRetirada
     }
     return (
         <><ScrollView contentContainerStyle={DefaultStyles.container}>
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F4F4F4',
         alignItems: "center",
         borderTopEndRadius: 20,
-        // borderTopEndRadius: Platform.OS === 'android' ? 20 : 0,
+        borderStartStartRadius: Platform.OS === 'android' ? 20 : 0,
         borderTopStartRadius: Platform.OS === 'web' ? 20 : 0,
         boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.3)',
         zIndex: 1000,
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E9E9E9',
         justifyContent: 'center',
         borderEndEndRadius: 20,
-        // borderEndStartRadius: Platform.OS === 'android' ? 20 : 0,
+        borderStartEndRadius: Platform.OS === 'android' ? 20 : 0,
         borderEndStartRadius: Platform.OS === 'web' ? 20 : 0,
         boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.3)',
         marginBottom: 20,
