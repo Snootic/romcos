@@ -120,6 +120,7 @@ const USUARIO_DATA = [
         email: 'joao.silva@example.com',
         senha: 'senha123',
         cnh: '12345678900',
+        genero: "masculino",
         telefone: '11987654321',
         historico: ['Interlagos', 'Monza', 'Suzuka'],
         imagem: "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"

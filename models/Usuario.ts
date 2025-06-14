@@ -6,4 +6,5 @@ export interface Usuario {
     cnh: string;
     historico?: string[];
     imagem?: string;
+    genero: string;
 }
