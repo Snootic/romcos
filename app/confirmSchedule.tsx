@@ -49,10 +49,10 @@ export default function ConfirmSchedule() {
             <Header title="Confirme seu agendamento" />
             <View style={styles.boxContainer}>
                 <View style={styles.itemBox}>
-                    <View style={styles.elementsBox}>
+                    <View style={[styles.elementsBox, {width: '40%'}]}>
                         <TinyView item={selectedCar} />
                     </View>
-                    <View style={styles.elementsBox}>
+                    <View style={[styles.elementsBox, {width: '60%'}]}>
                         <Text style={DefaultStyles.textBold}>Data de retirada</Text>
                         {pickersRetirada}
                         <Text style={DefaultStyles.textBold}>Data de Devolução</Text>
@@ -63,10 +63,10 @@ export default function ConfirmSchedule() {
                     <Text style={DefaultStyles.textBold}>Valor: R$500</Text>
                 </View>
                 <View style={styles.itemBox}>
-                    <View style={styles.elementsBox}>
+                    <View style={[styles.elementsBox, {width: '40%'}]}>
                         <TinyView item={selectedTrack} />
                     </View>
-                    <View style={styles.elementsBox}>
+                    <View style={[styles.elementsBox, {width: '60%'}]}>
                         <Text style={DefaultStyles.textBold}>Data de retirada</Text>
                         {pickersRetirada}
                         <Text style={DefaultStyles.textBold}>Data de Devolução</Text>
