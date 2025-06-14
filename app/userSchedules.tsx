@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './components/menu';
 import Header from './components/header';
 import DefaultStyles from './components/styles/default';
-import { View, Text, Pressable, StyleSheet, Platform, ScrollView } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Platform, ScrollView, Image } from 'react-native';
 import { CustomDatePicker, TimePicker, NativeDatePicker, NativeTimePicker } from './components/customDatePicker';
 import { useNavigation } from '@react-navigation/native';
 import CustomData from './dev/customData';
@@ -76,7 +76,11 @@ export default function UserSchedules() {
             <Pressable 
                 style={[styles.boxContainer, {marginTop: -130}]}
                 onPress={() => navigation.navigate('schedule')}>
-                <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Em andamento</Text>
+                <View style={{display: 'flex', flexDirection:'row'}}>
+                    <Text style={[DefaultStyles.titleText, {color: 'black'}]}>Em andamento</Text>
+                    <Image source={require('../assets/images/arrow.png')} style={styles.arrow} />
+                </View>
+                
                 <View style={styles.itemBox}>
                     <View style={[styles.elementsBox, {width: '40%'}]}>
                         <TinyView item={selectedCar} />
@@ -138,5 +142,12 @@ const styles = StyleSheet.create({
         width: '50%',
         display: 'flex',
         flexDirection: 'column'
+    },
+    arrow: {
+        width: 15,
+        height: 15,
+        marginLeft: 8,
+        resizeMode: 'contain',
+        alignSelf: 'center'
     }
 })
