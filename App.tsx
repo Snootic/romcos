@@ -12,6 +12,7 @@ import ViewCar from './app/viewCar';
 import ViewAutodromo from './app/viewAutodromo';
 import UserSchedules from './app/userSchedules';
 import Payment from './app/payment';
+import ConfirmSchedule from './app/confirmSchedule';
 
 import { Carro } from './models/Carro';
 import { Autodromo } from './models/Autodromo';
@@ -27,6 +28,7 @@ export type RootStackParamList = {
   viewCar: { carro: Carro };
   viewAutodromo: { autodromo: Autodromo};
   payment: undefined;
+  confirmSchedule: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -45,6 +47,7 @@ const App = () => {
         <Stack.Screen name="viewCar" component={ViewCar} />
         <Stack.Screen name="viewAutodromo" component={ViewAutodromo} />
         <Stack.Screen name="payment" component={Payment} />
+        <Stack.Screen name="confirmSchedule" component={ConfirmSchedule} />
       </Stack.Navigator>
     </NavigationContainer>
   );

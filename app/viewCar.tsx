@@ -5,7 +5,7 @@ import Header from './components/header';
 import DefaultStyles from './components/styles/default';
 
 import { View, Text, FlatList, Pressable, ScrollView } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import type { RootStackParamList } from '../App';
 
 import { Carro } from '../models/Carro';
@@ -14,6 +14,7 @@ import { Details } from './components/entities';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ViewCar = () => {
+    const navigation = useNavigation()
     const route = useRoute<RouteProp<RootStackParamList, 'viewCar'>>();
     const { carro } = route.params;
 
@@ -25,7 +26,7 @@ const ViewCar = () => {
                     <Details item={carro}></Details>
                 </View>
 
-                <Pressable onPress={() => alert('Carro selecionado')} style={DefaultStyles.buttonOne}>
+                <Pressable onPress={() => navigation.navigate('confirmSchedule')} style={DefaultStyles.buttonOne}>
                     <Text style={DefaultStyles.buttonOneText}>Selecionar Carro</Text>
                 </Pressable>
                 <Pressable onPress={() => alert('INfos')} style={DefaultStyles.buttonTwo}>
